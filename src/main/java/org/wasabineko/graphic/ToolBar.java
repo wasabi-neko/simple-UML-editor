@@ -6,6 +6,10 @@ import org.wasabineko.editorBehavior.EditorBehaviorAgent;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Every toolButton in toolbar should change the behavior of the
+ * target editorAgent.
+ */
 public class ToolBar extends JPanel {
     EditorBehaviorAgent editorAgent;
 

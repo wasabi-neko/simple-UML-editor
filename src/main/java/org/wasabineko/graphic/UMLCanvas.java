@@ -11,6 +11,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.LinkedList;
 
+/**
+ * UMLCanvas
+ * - Contains and manages all drawable UML objects.
+ * - Emits mouseEvent to editorAgent.
+ * - The mouseEvent Logic should leave to EditorBehavior to implement
+ */
 public class UMLCanvas extends JPanel {
     LinkedList<BasicObj> objList = new LinkedList<BasicObj>();  // for maintaining the obj depth attribute
     EditorBehaviorAgent editorAgent;
@@ -35,10 +41,11 @@ public class UMLCanvas extends JPanel {
     }
 
     /**
-     *  Mouse Event Listener Only for UMLCanvas
+     *  A MouseEventListener class only for UMLCanvas.
+     *  Just pass everything to EditorBehaviorAgent to handle these events
      */
     private static class UMLCanvasMouseEventListener implements MouseListener {
-        private UMLCanvas targetCanvas;
+        private final UMLCanvas targetCanvas;
 
         public UMLCanvasMouseEventListener(UMLCanvas targetCanvas) {
             this.targetCanvas = targetCanvas;
