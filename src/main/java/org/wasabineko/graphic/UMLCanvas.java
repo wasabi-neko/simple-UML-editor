@@ -1,7 +1,7 @@
 package org.wasabineko.graphic;
 
 import org.wasabineko.GeneralConfig;
-import org.wasabineko.editorBehavior.EditorAgent;
+import org.wasabineko.editorBehavior.EditorBehaviorAgent;
 import org.wasabineko.graphic.shape.basicObj.BasicObj;
 import org.wasabineko.graphic.shape.basicObj.UseCaseObj;
 
@@ -13,9 +13,9 @@ import java.util.LinkedList;
 
 public class UMLCanvas extends JPanel {
     LinkedList<BasicObj> objList = new LinkedList<BasicObj>();  // for maintaining the obj depth attribute
-    EditorAgent editorAgent;
+    EditorBehaviorAgent editorAgent;
 
-    public UMLCanvas(EditorAgent editorAgent) {
+    public UMLCanvas(EditorBehaviorAgent editorAgent) {
         super();
         this.editorAgent = editorAgent;
         setLayout(null);
