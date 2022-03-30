@@ -1,9 +1,10 @@
 package org.wasabineko.graphic.shape.basicObj;
 
-import org.wasabineko.graphic.shape.UMLObj;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class GroupObj extends BasicObj {
     LinkedList<BasicObj> childList;
@@ -20,11 +21,11 @@ public class GroupObj extends BasicObj {
 
     /**
      * Place this groupObj to the position of minX and minY of all objets,
-     * and then shift all objets to fit relevant coor to this groupObj
+     * and then shift all objets to fit relevant coordinate to this groupObj
      * @param childList the objets to be grouped
      */
-    void group(LinkedList<BasicObj> childList) {
-        assert(childList != null);
+    void group(@NotNull LinkedList<BasicObj> childList) {
+        Objects.requireNonNull(childList, "childList should not be null");
         this.childList = childList;
 
         int minX = Integer.MAX_VALUE, minY = Integer.MAX_VALUE;
@@ -62,11 +63,4 @@ public class GroupObj extends BasicObj {
         }
         return false;
     }
-
-    @Override
-    public UMLObj getTopParent() {
-        return null;
-    }
-
-
 }

@@ -1,8 +1,10 @@
 package org.wasabineko.graphic.shape.basicObj;
 
+import org.jetbrains.annotations.NotNull;
 import org.wasabineko.graphic.shape.UMLObj;
 
 import javax.swing.*;
+import java.util.Objects;
 
 public abstract class BasicObj extends UMLObj {
     private GroupObj parent;
@@ -18,13 +20,15 @@ public abstract class BasicObj extends UMLObj {
         return this.parent;
     }
 
-    public void setGroupParent(GroupObj group) {
+    public void setGroupParent(@NotNull GroupObj group) {
+        Objects.requireNonNull(group, "groupObj should not be null");
         this.parent = group;
         setLocation(this.getX() - group.getX(), this.getY() - group.getY());
         group.setComponentZOrder(this, 0);
     }
 
-    public void unGroup(GroupObj group) {
+    public void unGroup(@NotNull GroupObj group) {
+        Objects.requireNonNull(group, "groupObj should not be null");
         this.parent = null;
         setLocation(this.getX() + group.getX(), this.getY() + group.getY());
         group.remove(this);
