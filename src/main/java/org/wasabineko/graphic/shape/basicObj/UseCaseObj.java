@@ -1,5 +1,7 @@
 package org.wasabineko.graphic.shape.basicObj;
 
+import org.wasabineko.graphic.shape.UMLObj;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;

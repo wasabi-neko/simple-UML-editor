@@ -9,4 +9,6 @@ public abstract class UMLObj extends JPanel {
     }
 
     public abstract boolean isInShape(int x, int y);
+
+    public abstract UMLObj getTopParent();
 }
