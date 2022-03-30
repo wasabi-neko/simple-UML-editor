@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.util.Objects;
 
 public abstract class BasicObj extends UMLObj {
-    private GroupObj parent;
+    private GroupObj groupParent;
     protected JLabel nameLabel;
 
     public BasicObj(int posX, int posY, JLabel nameLabel) {
@@ -17,30 +17,44 @@ public abstract class BasicObj extends UMLObj {
     }
 
     public GroupObj getGroupParent() {
-        return this.parent;
+        return this.groupParent;
     }
 
+    /**
+     * Remove the objet itself from canvas, and add it to provided groupObject
+     * The coordinate of the object will be shifted to the relevant coordinate
+     * with the GroupObjet
+     * @param group the group object which to add this object in
+     */
     public void setGroupParent(@NotNull GroupObj group) {
         Objects.requireNonNull(group, "groupObj should not be null");
-        this.parent = group;
+
+        this.groupParent = group;
+        this.getParent().remove(this);
         setLocation(this.getX() - group.getX(), this.getY() - group.getY());
         group.setComponentZOrder(this, 0);
     }
 
+    /**
+     * Remove this object from group, and add it back to the groupObject's parent.
+     * The coordinate of the object will be shifted back to the relevant coordinate
+     * with the upper parent
+     * @param group the group object which to be removed from
+     */
     public void unGroup(@NotNull GroupObj group) {
         Objects.requireNonNull(group, "groupObj should not be null");
-        this.parent = null;
+        this.groupParent = null;
         setLocation(this.getX() + group.getX(), this.getY() + group.getY());
         group.remove(this);
+        group.getParent().add(this);
     }
-
 
     @Override
     public UMLObj getTopParent() {
-        if (parent == null) {
+        if (groupParent == null) {
             return this;
         } else {
-            return parent.getTopParent();
+            return groupParent.getTopParent();
         }
     }
 }
