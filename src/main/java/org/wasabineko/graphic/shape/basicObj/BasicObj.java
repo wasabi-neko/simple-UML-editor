@@ -32,6 +32,9 @@ public abstract class BasicObj extends UMLObj {
         this.nameLabel.setText(newName);
     }
 
+    public PortOverlay getPortOverlay() {
+        return this.portOverlay;
+    }
 
     //------------------------------------------------------------
     // Group relative Methods
@@ -83,6 +86,12 @@ public abstract class BasicObj extends UMLObj {
     //------------------------------------------------------------
     // Select relative Methods
     //------------------------------------------------------------
+    @Override
+    public boolean isSelectable() {
+        return true;
+    }
+
+    @Override
     public void setSelected(boolean isSelected) {
         this.selected = isSelected;
         this.portOverlay.setVisible(isSelected);

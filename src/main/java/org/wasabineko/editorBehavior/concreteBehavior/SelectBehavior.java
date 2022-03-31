@@ -82,6 +82,7 @@ public class SelectBehavior extends EditorBehavior {
         this.selectedList.clear();
     }
 
+    //TODO: this method logic should move to UMLCanvas
     private void selectArea(UMLCanvas canvas, MouseEvent event) {
         int upperX = event.getX();
         int upperY = event.getY();
@@ -105,7 +106,9 @@ public class SelectBehavior extends EditorBehavior {
         Component[] list = canvas.getComponents();
         for (int i = list.length-1; i >= 0; i--) {
             Component component = list[i];
-            assert(component instanceof  BasicObj);
+            if (!(component instanceof  BasicObj)) {
+                continue;
+            }
             BasicObj obj = (BasicObj) component;
 
             if (obj.getX() > upperX

@@ -2,6 +2,7 @@ package org.wasabineko.graphic;
 
 import org.wasabineko.GeneralConfig;
 import org.wasabineko.editorBehavior.EditorBehaviorAgent;
+import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.BasicObj;
 
 import javax.swing.*;
@@ -42,12 +43,12 @@ public class UMLCanvas extends JPanel {
         // detect objs from front-est to back-est
         Component[] list = this.getComponents();
         for (Component component : list) {
-            assert(component instanceof BasicObj);
+            assert(component instanceof UMLObj);
 
-            BasicObj obj = (BasicObj) component;
+            UMLObj obj = (UMLObj) component;
             MouseEvent objEvent = SwingUtilities.convertMouseEvent(this, event, obj);
             if (obj.isInShape(objEvent)) {
-                BasicObj topParent = (BasicObj) obj.getTopParent();
+                UMLObj topParent =  obj.getTopParent();
                 MouseEvent newEvent = SwingUtilities.convertMouseEvent(this, event, topParent);
                 editorAgent.objMouseAction(topParent, newEvent);
                 return;

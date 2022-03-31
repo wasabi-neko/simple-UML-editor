@@ -3,10 +3,12 @@ package org.wasabineko.graphic;
 import org.wasabineko.GeneralConfig;
 import org.wasabineko.editorBehavior.EditorBehavior;
 import org.wasabineko.editorBehavior.EditorBehaviorAgent;
+import org.wasabineko.editorBehavior.concreteBehavior.ConnectLineBehavior;
 import org.wasabineko.editorBehavior.concreteBehavior.CreateObjBehavior;
 import org.wasabineko.editorBehavior.concreteBehavior.SelectBehavior;
 import org.wasabineko.graphic.shape.basicObj.ClassObj;
 import org.wasabineko.graphic.shape.basicObj.UseCaseObj;
+import org.wasabineko.graphic.shape.connectionLine.AssociateLine;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,10 +34,12 @@ public class ToolBar extends JPanel {
         ToolButton selectButt = new ToolButton("select", new SelectBehavior());
         ToolButton useCaseButt = new ToolButton("useCase", new CreateObjBehavior(UseCaseObj::new));
         ToolButton classButt = new ToolButton("class", new CreateObjBehavior(ClassObj::new));
+        ToolButton associateLineButt = new ToolButton("associate line", new ConnectLineBehavior(AssociateLine::new));
 
         this.add(selectButt);
         this.add(useCaseButt);
         this.add(classButt);
+        this.add(associateLineButt);
     }
 
     public void add(ToolButton butt) {

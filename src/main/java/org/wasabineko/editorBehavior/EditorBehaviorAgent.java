@@ -3,6 +3,7 @@ package org.wasabineko.editorBehavior;
 import org.jetbrains.annotations.NotNull;
 import org.wasabineko.editorBehavior.concreteBehavior.EmptyBehavior;
 import org.wasabineko.graphic.UMLCanvas;
+import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.BasicObj;
 
 import java.awt.event.MouseEvent;
@@ -41,7 +42,7 @@ public class EditorBehaviorAgent {
         }
     }
 
-    public void objMouseAction(BasicObj obj, @NotNull MouseEvent event) {
+    public void objMouseAction(UMLObj obj, @NotNull MouseEvent event) {
         switch (event.getID()) {
             case MouseEvent.MOUSE_CLICKED -> editorBehavior.objClickAction(obj, event);
             case MouseEvent.MOUSE_PRESSED -> editorBehavior.objPressAction(obj, event);
