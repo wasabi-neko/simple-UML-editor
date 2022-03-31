@@ -21,7 +21,7 @@ import java.util.LinkedList;
  * - The mouseEvent Logic should leave to EditorBehavior to implement
  */
 public class UMLCanvas extends JPanel {
-    private LinkedList<BasicObj> objList = new LinkedList<>();  // for maintaining the obj depth attribute
+    private final LinkedList<BasicObj> objList = new LinkedList<>();  // for maintaining the obj depth attribute
     private EditorBehaviorAgent editorAgent;
 
     public UMLCanvas(EditorBehaviorAgent editorAgent) {

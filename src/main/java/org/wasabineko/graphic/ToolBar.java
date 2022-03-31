@@ -4,13 +4,10 @@ import org.wasabineko.GeneralConfig;
 import org.wasabineko.editorBehavior.EditorBehavior;
 import org.wasabineko.editorBehavior.EditorBehaviorAgent;
 import org.wasabineko.editorBehavior.concreteBehavior.CreateObjBehavior;
-import org.wasabineko.graphic.shape.basicObj.BasicObj;
 import org.wasabineko.graphic.shape.basicObj.UseCaseObj;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Every toolButton in toolbar should change the behavior of the
@@ -37,11 +34,10 @@ public class ToolBar extends JPanel {
         this.add(useCaseButt2);
     }
 
-    public ToolButton add(ToolButton butt) {
+    public void add(ToolButton butt) {
         super.add(butt);
         this.buttonGroup.add(butt);
         butt.parentBar = this;
-        return butt;
     }
 
     private static class ToolButton extends JToggleButton {
