@@ -6,12 +6,11 @@ import org.wasabineko.editorBehavior.EditorBehaviorAgent;
 import org.wasabineko.editorBehavior.concreteBehavior.SelectBehavior;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.LinkedList;
 
 public class MenuBar extends JMenuBar {
-    EditorBehaviorAgent editorAgent;
+    final EditorBehaviorAgent editorAgent;
 
     public MenuBar(EditorBehaviorAgent editorAgent) {
         super();
@@ -93,13 +92,15 @@ public class MenuBar extends JMenuBar {
         public EditMenu(MenuBar parent) {
             super("Edit");
             this.parent = parent;
-//            this.addActionListener(actionEvent -> {
-//                System.out.println("test open edit menu");
-//                for (SelectBehaviorConditionItem conditionItem : conditionItemList) {
-//                    System.out.println("test turn:" + conditionItem.workCondition());
-//                    conditionItem.setEnabled(conditionItem.workCondition());
-//                }
-//            });
+            this.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    for (SelectBehaviorConditionItem conditionItem : conditionItemList) {
+                        System.out.println("test turn:" + conditionItem.workCondition());
+                        conditionItem.setEnabled(conditionItem.workCondition());
+                    }
+                }
+            });
 
             groupItem = new SelectBehaviorConditionItem("group", parent,
                     SelectBehavior::isNowGroupAble, SelectBehavior::groupSelectedObjs);
