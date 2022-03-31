@@ -10,10 +10,10 @@ import java.awt.*;
  */
 public class PortOverlay extends JPanel {
     static public class Port extends JPanel {
-        public Port(int posX, int posY) {
+        public Port(int posX, int posY, int size) {
             super();
             this.setBackground(Color.BLACK);
-            this.setBounds(posX, posY, 5, 5);   //TODO: generalConfig
+            this.setBounds(posX, posY, size, size);   //TODO: generalConfig
             this.setOpaque(true);
         }
 
@@ -30,19 +30,20 @@ public class PortOverlay extends JPanel {
 
     public void setMaster(BasicObj master) {
         this.master = master;
-        this.setBounds(0,  0, master.getWidth(), master.getHeight());
+        int portSize = 10;
 
-        Port pNorth = new Port(getWidth() / 2, 0);
-        Port pSouth = new Port(getWidth() / 2, getHeight());
-        Port pWest = new Port(0, getHeight() / 2);
-        Port pEast = new Port(0, getHeight() / 2);
+        this.setBounds(0,  0, master.getWidth(), master.getHeight());
+        Port pNorth = new Port(getWidth()/2 - portSize/2, 0, portSize);
+        Port pSouth = new Port(getWidth()/2 - portSize/2, getHeight() - portSize, portSize);
+        Port pWest = new Port(0, getHeight()/2 - portSize/2, portSize);
+        Port pEast = new Port(getWidth() - portSize, getHeight()/2 - portSize/2, portSize);
         this.add(pNorth);
         this.add(pSouth);
         this.add(pWest);
         this.add(pEast);
+        this.setLayout(null);
 
-        this.setBackground(Color.CYAN);
-        this.setOpaque(true);
+        this.setOpaque(false);
         this.setVisible(false);
     }
 }
