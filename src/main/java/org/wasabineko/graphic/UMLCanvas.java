@@ -21,7 +21,6 @@ import java.util.LinkedList;
  * - The mouseEvent Logic should leave to EditorBehavior to implement
  */
 public class UMLCanvas extends JPanel {
-    private final LinkedList<BasicObj> objList = new LinkedList<>();  // for maintaining the obj depth attribute
     private EditorBehaviorAgent editorAgent;
 
     public UMLCanvas(EditorBehaviorAgent editorAgent) {
@@ -36,22 +35,7 @@ public class UMLCanvas extends JPanel {
     public void setEditorAgent(EditorBehaviorAgent editorAgent) {
         this.editorAgent = editorAgent;
     }
-
-    public EditorBehaviorAgent getEditorAgent() {
-        return this.editorAgent;
-    }
-
-    public void addObjOntop(BasicObj obj) {
-        objList.add(obj);
-        add(obj);
-        setComponentZOrder(obj, 0);
-        repaint();
-    }
-
-    public void eraseObj(BasicObj obj) {
-        remove(obj);
-        objList.remove(obj);
-    }
+    public EditorBehaviorAgent getEditorAgent() { return this.editorAgent; }
 
     /**
      * Detect is there any basicObj on canvas contains the provided coordinate
@@ -60,10 +44,12 @@ public class UMLCanvas extends JPanel {
      * @return null if no obj detected. if the detected Obj has a group parent then return the group parent
      */
     private BasicObj detectObj(int x, int y) {
+        Component[] list = this.getComponents();
+
         // from front-est obj to back-est obj
-        Iterator<BasicObj> objIter = objList.descendingIterator();
-        while (objIter.hasNext()) {
-            BasicObj obj = objIter.next();
+        for (Component component : list) {
+            assert(component instanceof BasicObj);
+            BasicObj obj = (BasicObj) component;
             if (obj.isInShape(x, y)) {
                 return (BasicObj) obj.getTopParent();
             }

@@ -30,7 +30,9 @@ public class CreateObjBehavior extends EditorBehavior {
     @Override
     public void canvasClickAction(UMLCanvas canvas, MouseEvent event) {
         BasicObj obj = this.objFactory.createObj(event.getX(), event.getY());
-        canvas.addObjOntop(obj);
+        canvas.add(obj);
+        canvas.setComponentZOrder(obj, 0);
+        canvas.repaint();
     }
 
     @Override
