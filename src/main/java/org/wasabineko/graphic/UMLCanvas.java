@@ -1,18 +1,13 @@
 package org.wasabineko.graphic;
 
 import org.wasabineko.GeneralConfig;
-import org.wasabineko.editorBehavior.EditorBehavior;
 import org.wasabineko.editorBehavior.EditorBehaviorAgent;
 import org.wasabineko.graphic.shape.basicObj.BasicObj;
-import org.wasabineko.graphic.shape.basicObj.UseCaseObj;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.InputMethodListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Iterator;
-import java.util.LinkedList;
 
 /**
  * UMLCanvas

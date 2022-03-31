@@ -31,7 +31,7 @@ public abstract class EditorBehavior {
      * Example: ModeTag tag = new ModeTag(ModeTag.TAGS.SELECT_MODE & ModeTag.TAGS.CREATE_MODE);
      * Example2: if (tag.isInclude(ModeTag.TAGS.SELECT_MODE) {...}
      */
-    public static class ModeTag {
+    public record ModeTag(int modeTag) {
         public enum TAGS {
             EMPTY_MODE(0x0),
             SELECT_MODE(0x1),
@@ -39,18 +39,14 @@ public abstract class EditorBehavior {
             CONNECT_MODE(0x1 << 2);
 
             public final int value;
-            private TAGS(int label) {
+
+            TAGS(int label) {
                 this.value = label;
             }
+
             public int getValue() {
                 return this.value;
             }
-        }
-
-        private final int modeTag;
-
-        public ModeTag(int modeTag) {
-            this.modeTag = modeTag;
         }
 
         public boolean isInlucdeTag(@NotNull TAGS tag) {

@@ -5,7 +5,6 @@ import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
 
 import javax.swing.*;
-import javax.swing.plaf.LabelUI;
 import java.awt.*;
 import java.util.Objects;
 

@@ -3,7 +3,6 @@ package org.wasabineko.editorBehavior;
 import org.jetbrains.annotations.NotNull;
 import org.wasabineko.editorBehavior.concreteBehavior.EmptyBehavior;
 import org.wasabineko.graphic.UMLCanvas;
-import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.BasicObj;
 
 import java.awt.event.MouseEvent;

@@ -16,10 +16,6 @@ public class PortOverlay extends JPanel {
             this.setBounds(posX, posY, size, size);   //TODO: generalConfig
             this.setOpaque(true);
         }
-
-//        public Dimension2D getRelevantCoord(JComponent component) {
-//
-//        }
     }
 
     BasicObj master;

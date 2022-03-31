@@ -1,6 +1,5 @@
 package org.wasabineko.graphic.shape.basicObj;
 
-import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
 
 import javax.swing.*;

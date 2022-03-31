@@ -5,9 +5,7 @@ import org.wasabineko.graphic.UMLCanvas;
 import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.BasicObj;
 
-import javax.swing.*;
 import java.awt.event.MouseEvent;
-import java.util.function.Function;
 
 public class CreateObjBehavior extends EditorBehavior {
     // ------------------------------------------------------------

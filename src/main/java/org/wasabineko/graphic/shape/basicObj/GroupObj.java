@@ -4,7 +4,6 @@ import org.jetbrains.annotations.NotNull;
 import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
 
 import javax.swing.*;
-import javax.swing.border.StrokeBorder;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
