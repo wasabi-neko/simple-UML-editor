@@ -4,6 +4,7 @@ import org.wasabineko.GeneralConfig;
 import org.wasabineko.editorBehavior.EditorBehavior;
 import org.wasabineko.editorBehavior.EditorBehaviorAgent;
 import org.wasabineko.editorBehavior.concreteBehavior.CreateObjBehavior;
+import org.wasabineko.graphic.shape.basicObj.ClassObj;
 import org.wasabineko.graphic.shape.basicObj.UseCaseObj;
 
 import javax.swing.*;
@@ -28,10 +29,10 @@ public class ToolBar extends JPanel {
 
         // buttons
         ToolButton useCaseButt = new ToolButton("useCase", new CreateObjBehavior(UseCaseObj::new));
-        ToolButton useCaseButt2 = new ToolButton("useCase", new CreateObjBehavior(UseCaseObj::new));
+        ToolButton classButt = new ToolButton("class", new CreateObjBehavior(ClassObj::new));
 
         this.add(useCaseButt);
-        this.add(useCaseButt2);
+        this.add(classButt);
     }
 
     public void add(ToolButton butt) {
