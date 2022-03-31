@@ -14,7 +14,7 @@ public class CreateObjBehavior extends EditorBehavior {
     // Nested Class
     // ------------------------------------------------------------
     public interface ObjFactory {
-        public BasicObj createObj(int x, int y);
+        BasicObj createObj(int x, int y);
     }
 
     // ------------------------------------------------------------
