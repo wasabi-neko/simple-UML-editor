@@ -1,5 +1,7 @@
 package org.wasabineko.graphic.shape.basicObj;
 
+import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -10,7 +12,7 @@ public class ClassObj extends BasicObj{
 
 
     public ClassObj(int posX, int posY) {
-        super(posX, posY, new JLabel("class", SwingConstants.CENTER));
+        super(posX, posY, new JLabel("class", SwingConstants.CENTER), new PortOverlay());
 
         int borderSize = 2;
         reactOutLine = new Rectangle2D.Double(0, 0, 100, 150);
@@ -19,6 +21,9 @@ public class ClassObj extends BasicObj{
         setBounds(posX, posY, 100, 150);
         nameLabel.setBounds(0, 0, this.getWidth(), this.getHeight());
         this.add(nameLabel);
+        this.add(portOverlay);
+        portOverlay.setMaster(this);
+
         setLayout(null);
         setOpaque(false);
     }
@@ -29,13 +34,10 @@ public class ClassObj extends BasicObj{
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
+    public void paintSelf(Graphics2D g2d) {
         g2d.setPaint(Color.BLACK);
         g2d.fill(reactOutLine);
         g2d.setPaint(Color.LIGHT_GRAY);
         g2d.fill(reactInside);
-        paintChildren(g);
     }
 }

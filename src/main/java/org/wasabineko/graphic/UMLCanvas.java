@@ -37,37 +37,29 @@ public class UMLCanvas extends JPanel {
     }
     public EditorBehaviorAgent getEditorAgent() { return this.editorAgent; }
 
-    /**
-     * Detect is there any basicObj on canvas contains the provided coordinate
-     * @param x the X coordinate
-     * @param y the Y coordinate
-     * @return null if no obj detected. if the detected Obj has a group parent then return the group parent
-     */
-    private BasicObj detectObj(int x, int y) {
-        Component[] list = this.getComponents();
-
-        // from front-est obj to back-est obj
-        for (Component component : list) {
-            assert(component instanceof BasicObj);
-            BasicObj obj = (BasicObj) component;
-            if (obj.isInShape(x, y)) {
-                return (BasicObj) obj.getTopParent();
-            }
-        }
-        return null;
-    }
 
     /**
      * pass the mouse event to its EditorBehaviorAgent to perform the action
      * @param event the mouse event
      */
     private void passMouseEventToAgent(MouseEvent event) {
-        BasicObj obj = detectObj(event.getX(), event.getY());
-        if (obj == null) {
-            editorAgent.canvasMouseAction(this, event);
-        } else {
-            editorAgent.objMouseAction(obj, event);
+        Component[] list = this.getComponents();
+
+        for (Component component : list) {
+            assert(component instanceof BasicObj);
+
+            BasicObj obj = (BasicObj) component;
+            MouseEvent objEvent = SwingUtilities.convertMouseEvent(this, event, obj);
+            if (obj.isInShape(objEvent.getX(), objEvent.getY())) {
+                BasicObj topParent = (BasicObj) obj.getTopParent();
+                MouseEvent newEvent = SwingUtilities.convertMouseEvent(this, event, topParent);
+                editorAgent.objMouseAction(topParent, newEvent);
+                return;
+            }
         }
+
+        // if non-of the objets contains the mouse, then perform pure canvas mouse event
+        editorAgent.canvasMouseAction(this, event);
     }
 
     /**

@@ -1,8 +1,12 @@
 package org.wasabineko.graphic.shape.basicObj;
 
 import org.jetbrains.annotations.NotNull;
+import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
 
 import javax.swing.*;
+import javax.swing.border.StrokeBorder;
+import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
 import java.util.Objects;
 
@@ -10,12 +14,12 @@ public class GroupObj extends BasicObj {
     LinkedList<BasicObj> childList;
 
     public GroupObj() {
-        super(0, 0, new JLabel(""));
+        super(0, 0, new JLabel(""), new PortOverlay());     // TODO: groupObj should not have port
         this.childList = new LinkedList<>();
     }
 
     public GroupObj(LinkedList<BasicObj> childList) {
-        super(0, 0, new JLabel(""));
+        super(0, 0, new JLabel(""), new PortOverlay());
         this.group(childList);
     }
 
@@ -62,5 +66,12 @@ public class GroupObj extends BasicObj {
            }
         }
         return false;
+    }
+
+    @Override
+    public void paintSelf(Graphics2D g2d) {
+        g2d.setPaint(Color.BLACK);
+        g2d.setStroke(new BasicStroke(2));
+        g2d.draw(new Rectangle2D.Double(0, 0, this.getWidth(), this.getHeight()));
     }
 }
