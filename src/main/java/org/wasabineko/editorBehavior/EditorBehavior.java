@@ -66,10 +66,11 @@ public abstract class EditorBehavior {
         assert(container instanceof UMLCanvas);     // the parent of top-parent should be UMLCanvas
 
         UMLCanvas canvas = (UMLCanvas) container;
+        MouseEvent newEvent = SwingUtilities.convertMouseEvent(obj, event, canvas);     // convert mouse event
         switch (event.getID()) {
-            case MouseEvent.MOUSE_CLICKED -> behavior.canvasClickAction(canvas, event);
-            case MouseEvent.MOUSE_PRESSED -> behavior.canvasPressAction(canvas, event);
-            case MouseEvent.MOUSE_RELEASED -> behavior.canvasReleaseAction(canvas, event);
+            case MouseEvent.MOUSE_CLICKED -> behavior.canvasClickAction(canvas, newEvent);
+            case MouseEvent.MOUSE_PRESSED -> behavior.canvasPressAction(canvas, newEvent);
+            case MouseEvent.MOUSE_RELEASED -> behavior.canvasReleaseAction(canvas, newEvent);
         }
     }
 }

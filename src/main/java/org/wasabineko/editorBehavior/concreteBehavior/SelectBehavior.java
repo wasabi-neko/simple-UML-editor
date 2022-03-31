@@ -46,6 +46,7 @@ public class SelectBehavior extends EditorBehavior {
         if (obj instanceof BasicObj) {
             this.selectedList.add((BasicObj) obj);
             ((BasicObj) obj).setSelected(true);
+            obj.getTopParent().getParent().setComponentZOrder(obj, 0);  // bring to front
         }
     }
 
