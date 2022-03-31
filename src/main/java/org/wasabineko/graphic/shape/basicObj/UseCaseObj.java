@@ -8,9 +8,9 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
 
 public class UseCaseObj extends BasicObj {
-    protected Ellipse2D ovalOutside;
-    protected Ellipse2D ovalInside;
-    protected Color color;
+    protected final Ellipse2D ovalOutside;
+    protected final Ellipse2D ovalInside;
+    protected final Color color;
 
     public UseCaseObj(int posX, int posY) {
         super(posX, posY, new JLabel("Usecase", SwingConstants.CENTER), new PortOverlay());

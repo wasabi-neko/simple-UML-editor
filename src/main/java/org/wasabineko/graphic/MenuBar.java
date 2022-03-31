@@ -54,9 +54,9 @@ public class MenuBar extends JMenuBar {
                 void function(SelectBehavior selectBehavior);
             }
 
-            MenuBar menuBar;
-            ConditionFunction conditionFunction;
-            ActionFunction actionFunction;
+            final MenuBar menuBar;
+            final ConditionFunction conditionFunction;
+            final ActionFunction actionFunction;
 
             public SelectBehaviorConditionItem(String name, MenuBar menuBar, ConditionFunction condition, ActionFunction action) {
                 super(name);

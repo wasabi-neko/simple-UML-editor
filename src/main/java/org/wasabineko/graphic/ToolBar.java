@@ -16,8 +16,8 @@ import java.awt.*;
  * target editorAgent.
  */
 public class ToolBar extends JPanel {
-    EditorBehaviorAgent editorAgent;
-    ButtonGroup buttonGroup;
+    final EditorBehaviorAgent editorAgent;
+    final ButtonGroup buttonGroup;
 
     public ToolBar(EditorBehaviorAgent editorAgent) {
         super();

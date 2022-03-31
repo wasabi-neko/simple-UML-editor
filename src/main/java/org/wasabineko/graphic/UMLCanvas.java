@@ -59,39 +59,27 @@ public class UMLCanvas extends JPanel {
     }
 
     /**
-     *  A MouseEventListener class only for UMLCanvas.
-     *  Just pass everything to EditorBehaviorAgent to handle these events
+     * A MouseEventListener class only for UMLCanvas.
+     * Just pass everything to EditorBehaviorAgent to handle these events
      */
-    private static class UMLCanvasMouseEventListener implements MouseListener {
-        private final UMLCanvas targetCanvas;
-
-        public UMLCanvasMouseEventListener(UMLCanvas targetCanvas) {
-            this.targetCanvas = targetCanvas;
-        }
+    private record UMLCanvasMouseEventListener(UMLCanvas targetCanvas) implements MouseListener {
 
         @Override
         public void mouseClicked(MouseEvent mouseEvent) {
             targetCanvas.passMouseEventToAgent(mouseEvent);
         }
-
         @Override
         public void mousePressed(MouseEvent mouseEvent) {
             targetCanvas.passMouseEventToAgent(mouseEvent);
         }
-
         @Override
         public void mouseReleased(MouseEvent mouseEvent) {
             targetCanvas.passMouseEventToAgent(mouseEvent);
         }
 
         @Override
-        public void mouseEntered(MouseEvent mouseEvent) {
-            /* do nothing */
-        }
-
+        public void mouseEntered(MouseEvent mouseEvent) { /* do nothing */ }
         @Override
-        public void mouseExited(MouseEvent mouseEvent) {
-            /* do nothing */
-        }
+        public void mouseExited(MouseEvent mouseEvent) { /* do nothing */ }
     }
 }

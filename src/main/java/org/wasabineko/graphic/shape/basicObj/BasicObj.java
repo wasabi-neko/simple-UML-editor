@@ -11,8 +11,8 @@ import java.util.Objects;
 public abstract class BasicObj extends UMLObj {
     private GroupObj groupParent;
     protected boolean selected = false;
-    protected PortOverlay portOverlay;
-    protected JLabel nameLabel;
+    protected final PortOverlay portOverlay;
+    protected final JLabel nameLabel;
 
     public BasicObj(int posX, int posY, JLabel nameLabel, PortOverlay portOverlay) {
         super();

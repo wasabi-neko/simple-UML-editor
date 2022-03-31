@@ -7,11 +7,11 @@ import java.awt.*;
  */
 public class GeneralConfig {
     private static GeneralConfig instance;
-    private String winTitle;
-    private Dimension defaultWinSize;
-    private Dimension defaultToolBarSize;
-    private Dimension defaultCanvasSize;
-    private Dimension defaultMenuSize;
+    private final String winTitle;
+    private final Dimension defaultWinSize;
+    private final Dimension defaultToolBarSize;
+    private final Dimension defaultCanvasSize;
+    private final Dimension defaultMenuSize;
 
     private GeneralConfig() {
         winTitle = "simple-UML-editor";

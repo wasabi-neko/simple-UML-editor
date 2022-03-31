@@ -12,9 +12,9 @@ import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 
 public class SelectBehavior extends EditorBehavior {
-    LinkedList<BasicObj> selectedList = new LinkedList<>();
-    Point pressedCoordinate = new Point(0,0);
-    Point objInternalShift = new Point(0, 0);
+    final LinkedList<BasicObj> selectedList = new LinkedList<>();
+    final Point pressedCoordinate = new Point(0,0);
+    final Point objInternalShift = new Point(0, 0);
     boolean isDragObj;
     BasicObj registerObj;
 

@@ -8,8 +8,8 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 
 public class ClassObj extends BasicObj{
-    protected Shape reactOutLine;
-    protected Shape reactInside;
+    protected final Shape reactOutLine;
+    protected final Shape reactInside;
 
 
     public ClassObj(int posX, int posY) {
