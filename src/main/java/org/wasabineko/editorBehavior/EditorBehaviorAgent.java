@@ -1,8 +1,10 @@
 package org.wasabineko.editorBehavior;
 
+import org.jetbrains.annotations.NotNull;
 import org.wasabineko.editorBehavior.concreteBehavior.EmptyBehavior;
 import org.wasabineko.graphic.UMLCanvas;
 import org.wasabineko.graphic.shape.UMLObj;
+import org.wasabineko.graphic.shape.basicObj.BasicObj;
 
 import java.awt.event.MouseEvent;
 import java.util.Objects;
@@ -26,28 +28,21 @@ public class EditorBehaviorAgent {
     // ------------------------------------------------------------
     // Just Pass every action to its core behavior object
     // ------------------------------------------------------------
-    public void canvasClickAction(UMLCanvas canvas, MouseEvent event) {
-        editorBehavior.canvasClickAction(canvas, event);
+    public void canvasMouseAction(UMLCanvas canvas, @NotNull MouseEvent event) {
+        switch (event.getID()) {
+            case MouseEvent.MOUSE_CLICKED -> editorBehavior.canvasClickAction(canvas, event);
+            case MouseEvent.MOUSE_PRESSED -> editorBehavior.canvasPressAction(canvas, event);
+            case MouseEvent.MOUSE_RELEASED -> editorBehavior.canvasReleaseAction(canvas, event);
+            //TODO: raise exception: exception case
+        }
     }
 
-    public void canvasPressAction(UMLCanvas canvas, MouseEvent event) {
-        editorBehavior.canvasPressAction(canvas, event);
+    public void objMouseAction(BasicObj obj, @NotNull MouseEvent event) {
+        switch (event.getID()) {
+            case MouseEvent.MOUSE_CLICKED -> editorBehavior.objClickAction(obj, event);
+            case MouseEvent.MOUSE_PRESSED -> editorBehavior.objPressAction(obj, event);
+            case MouseEvent.MOUSE_RELEASED -> editorBehavior.objReleaseAction(obj, event);
+            //TODO: raise exception: exception case
+        }
     }
-
-    public void canvasReleaseAction(UMLCanvas canvas, MouseEvent event) {
-        editorBehavior.canvasReleaseAction(canvas, event);
-    }
-
-    public void objClickAction(UMLObj obj, MouseEvent event) {
-        editorBehavior.objClickAction(obj, event);
-    }
-
-    public void objPressAction(UMLObj obj, MouseEvent event) {
-        editorBehavior.objPressAction(obj, event);
-    }
-
-    public void objReleaseAction(UMLObj obj, MouseEvent event) {
-        editorBehavior.objReleaseAction(obj, event);
-    }
-
 }
