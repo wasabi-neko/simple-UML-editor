@@ -15,4 +15,9 @@ public class AssociateLine extends ConnectionLine {
     protected void paintHead(Graphics2D g2d) {
 
     }
+
+    @Override
+    public boolean isConnectAble() {
+        return false;
+    }
 }

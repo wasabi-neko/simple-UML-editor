@@ -13,7 +13,7 @@ import java.util.Objects;
 public class GroupObj extends BasicObj {
 
     public GroupObj() {
-        super(0, 0, new JLabel(""), new PortOverlay());     // TODO: groupObj should not have port
+        super(0, 0, false, new JLabel(""), new PortOverlay());     // TODO: groupObj should not have port
         this.setLayout(null);
         this.setOpaque(false);
     }

@@ -13,7 +13,7 @@ public class UseCaseObj extends BasicObj {
     protected final Color color;
 
     public UseCaseObj(int posX, int posY) {
-        super(posX, posY, new JLabel("Usecase", SwingConstants.CENTER), new PortOverlay());
+        super(posX, posY, true, new JLabel("Usecase", SwingConstants.CENTER), new PortOverlay());
 
         ovalOutside = new Ellipse2D.Double(0, 0, 200, 100);  //TODO: general config
         int borderSize = 2;

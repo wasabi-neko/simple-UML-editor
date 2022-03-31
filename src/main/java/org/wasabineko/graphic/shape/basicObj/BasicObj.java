@@ -2,7 +2,9 @@ package org.wasabineko.graphic.shape.basicObj;
 
 import org.jetbrains.annotations.NotNull;
 import org.wasabineko.graphic.shape.UMLObj;
+import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
+import org.wasabineko.graphic.shape.connectionLine.ConnectionLine;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,12 +12,14 @@ import java.util.Objects;
 
 public abstract class BasicObj extends UMLObj {
     private GroupObj groupParent;
+    final private boolean isConnectAble;
     protected boolean selected = false;
     protected final PortOverlay portOverlay;
     protected final JLabel nameLabel;
 
-    public BasicObj(int posX, int posY, JLabel nameLabel, PortOverlay portOverlay) {
+    public BasicObj(int posX, int posY, boolean isConnectAble, JLabel nameLabel, PortOverlay portOverlay) {
         super();
+        this.isConnectAble = isConnectAble;
         this.nameLabel = nameLabel;
         this.portOverlay = portOverlay;
         this.setLocation(posX, posY);
@@ -24,6 +28,11 @@ public abstract class BasicObj extends UMLObj {
     //------------------------------------------------------------
     // Basic
     //------------------------------------------------------------
+    @Override
+    public boolean isConnectAble() {
+        return this.isConnectAble;
+    }
+
     public String getLabelName() {
         return this.nameLabel.getText();
     }
@@ -102,6 +111,12 @@ public abstract class BasicObj extends UMLObj {
     // Drawing relative Methods
     //------------------------------------------------------------
     abstract public void paintSelf(Graphics2D g2d);
+
+    public void repaintConnectedLine() {
+        for (Port port : this.portOverlay.getPortList()) {
+            port.repaintConnectedLine();
+        }
+    }
 
     @Override
     public void paintComponent(Graphics g) {

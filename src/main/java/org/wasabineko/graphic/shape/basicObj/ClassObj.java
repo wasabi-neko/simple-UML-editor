@@ -13,7 +13,7 @@ public class ClassObj extends BasicObj{
 
 
     public ClassObj(int posX, int posY) {
-        super(posX, posY, new JLabel("class", SwingConstants.CENTER), new PortOverlay());
+        super(posX, posY, true, new JLabel("class", SwingConstants.CENTER), new PortOverlay());
 
         int borderSize = 2;
         reactOutLine = new Rectangle2D.Double(0, 0, 100, 150);

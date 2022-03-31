@@ -125,6 +125,7 @@ public class SelectBehavior extends EditorBehavior {
     private void dragObjToReleasePoint(BasicObj obj, Point objShift, MouseEvent event) {
         obj.setLocation((int) (event.getX() - objShift.getX()), (int) (event.getY() - objShift.getY()));
         obj.getTopParent().getParent().setComponentZOrder(obj, 0);
+        obj.repaintConnectedLine();
     }
 
     // Canvas Mouse Action

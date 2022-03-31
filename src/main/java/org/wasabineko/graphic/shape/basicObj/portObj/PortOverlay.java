@@ -44,6 +44,10 @@ public class PortOverlay extends JPanel {
         this.setVisible(false);
     }
 
+    public List<Port> getPortList() {
+        return  this.portList;
+    }
+
     public Port getClosetPort(int x, int y) {
         Port minPort = this.portList.get(1);
         double minDistance = Double.MAX_VALUE;

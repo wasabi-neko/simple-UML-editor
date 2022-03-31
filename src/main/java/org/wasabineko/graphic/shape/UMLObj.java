@@ -12,5 +12,6 @@ public abstract class UMLObj extends JPanel {
 
     public abstract UMLObj getTopParent();
     public abstract boolean isSelectable();
+    public abstract boolean isConnectAble();
     public abstract void setSelected(boolean isSelected);
 }

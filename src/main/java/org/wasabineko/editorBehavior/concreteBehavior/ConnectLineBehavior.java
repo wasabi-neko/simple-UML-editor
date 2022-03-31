@@ -41,14 +41,14 @@ public class ConnectLineBehavior extends EditorBehavior {
 
     @Override
     public void objPressAction(UMLObj obj, MouseEvent event) {
-        if (obj instanceof BasicObj) {
+        if (obj instanceof BasicObj && obj.isConnectAble()) {
             this.registerPort = ((BasicObj)obj).getPortOverlay().getClosetPort(event.getX(), event.getY());
         }
     }
 
     @Override
     public void objReleaseAction(UMLObj obj, MouseEvent event) {
-        if (!(obj instanceof BasicObj)) {   //TODO: maybe change it to raise exception. need a better way to prevent down cast the UMLObj
+        if (!(obj instanceof BasicObj && obj.isConnectAble())) {   //TODO: maybe change it to raise exception. need a better way to prevent down cast the UMLObj
             return;
         }
         Port toPort = ((BasicObj)obj).getPortOverlay().getClosetPort(event.getX(), event.getY());
