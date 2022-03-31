@@ -1,5 +1,6 @@
 package org.wasabineko;
 
+import org.wasabineko.editorBehavior.EditorBehaviorAgent;
 import org.wasabineko.graphic.EditPanel;
 import org.wasabineko.graphic.MenuBar;
 
@@ -10,8 +11,10 @@ public class App {
         System.setProperty("sun.java2d.uiScale", "2.0");    // TODO: this method seems duml dum
 
         JFrame frame = new JFrame(GeneralConfig.getInstance().getWinTitle());
-        EditPanel editPanel = new EditPanel();
-        MenuBar menuBar = new MenuBar();
+
+        EditorBehaviorAgent editorAgent = new EditorBehaviorAgent();
+        EditPanel editPanel = new EditPanel(editorAgent);
+        MenuBar menuBar = new MenuBar(editorAgent);
 
         frame.setContentPane(editPanel);
         frame.setJMenuBar(menuBar);

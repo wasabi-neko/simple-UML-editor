@@ -6,11 +6,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class EditPanel extends JPanel {
-    public EditPanel() {
+    public EditPanel(EditorBehaviorAgent editorAgent) {
         super();
         setLayout(new BorderLayout());
 
-        EditorBehaviorAgent editorAgent = new EditorBehaviorAgent();
         ToolBar toolBar = new ToolBar(editorAgent);
 //        TODO: toolBar init state to selectMode
         UMLCanvas canvas = new UMLCanvas(editorAgent);

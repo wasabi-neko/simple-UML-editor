@@ -20,6 +20,11 @@ public class EditorBehaviorAgent {
         this.editorBehavior = editorBehavior;
     }
 
+    //TODO: maybe this is not a dummy dum dum idea, but i have to :(
+    public EditorBehavior getEditorBehavior() {
+        return this.editorBehavior;
+    }
+
     public EditorBehavior.ModeTag getEditorBehaviorModeTag() {
         return this.editorBehavior.modeTag;
     }

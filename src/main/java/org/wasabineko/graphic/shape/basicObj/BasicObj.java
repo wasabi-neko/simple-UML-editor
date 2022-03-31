@@ -22,6 +22,18 @@ public abstract class BasicObj extends UMLObj {
     }
 
     //------------------------------------------------------------
+    // Basic
+    //------------------------------------------------------------
+    public String getLabelName() {
+        return this.nameLabel.getText();
+    }
+
+    public void setLabelName(String newName) {
+        this.nameLabel.setText(newName);
+    }
+
+
+    //------------------------------------------------------------
     // Group relative Methods
     //------------------------------------------------------------
     public GroupObj getGroupParent() {
@@ -39,6 +51,7 @@ public abstract class BasicObj extends UMLObj {
 
         this.groupParent = group;
         this.getParent().remove(this);
+        group.add(this);
         setLocation(this.getX() - group.getX(), this.getY() - group.getY());
         group.setComponentZOrder(this, 0);
     }
@@ -49,12 +62,13 @@ public abstract class BasicObj extends UMLObj {
      * with the upper parent
      * @param group the group object which to be removed from
      */
-    public void unGroup(@NotNull GroupObj group) {
+    public void ungroupFromGroup(@NotNull GroupObj group, Container groupParent) {
         Objects.requireNonNull(group, "groupObj should not be null");
         this.groupParent = null;
         setLocation(this.getX() + group.getX(), this.getY() + group.getY());
         group.remove(this);
-        group.getParent().add(this);
+        groupParent.add(this);
+        groupParent.setComponentZOrder(this, 0);
     }
 
     @Override

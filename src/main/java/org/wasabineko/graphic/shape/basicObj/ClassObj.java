@@ -4,6 +4,7 @@ import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 
 public class ClassObj extends BasicObj{
@@ -29,8 +30,8 @@ public class ClassObj extends BasicObj{
     }
 
     @Override
-    public boolean isInShape(int x, int y) {
-        return this.reactOutLine.contains(x, y);
+    public boolean isInShape(MouseEvent event) {
+        return this.reactOutLine.contains(event.getX(), event.getY());
     }
 
     @Override

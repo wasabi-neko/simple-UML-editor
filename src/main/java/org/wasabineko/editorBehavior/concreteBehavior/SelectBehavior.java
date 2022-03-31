@@ -4,6 +4,7 @@ import org.wasabineko.editorBehavior.EditorBehavior;
 import org.wasabineko.graphic.UMLCanvas;
 import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.BasicObj;
+import org.wasabineko.graphic.shape.basicObj.GroupObj;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +20,59 @@ public class SelectBehavior extends EditorBehavior {
 
     public SelectBehavior() {
         super(ModeTag.TAGS.SELECT_MODE.getValue());
+    }
+
+//    TODO: this structure feels dum dum, need to be refactor later
+    public boolean isNowGroupAble() {
+        return this.selectedList.size() > 1;
+    }
+
+    public boolean isNowUngroupAble() {
+        return this.selectedList.size() == 1 && (this.selectedList.getFirst() instanceof GroupObj);
+    }
+
+    public boolean isNowRenameAble() {
+        return this.selectedList.size() == 1;
+    }
+
+    public boolean groupSelectedObjs() {
+        if (this.isNowGroupAble()) {
+            Container container = selectedList.getFirst().getParent();
+            GroupObj groupObj = new GroupObj();
+            groupObj.setObjsToGroup(this.selectedList);
+            container.add(groupObj);
+            container.setComponentZOrder(groupObj, 0);
+
+            // unselect all and select the groupObj
+            this.cleanAllSelected();
+            groupObj.setSelected(true);
+            this.selectedList.add(groupObj);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean ungroupSelectedObj() {
+        if (this.isNowUngroupAble()) {
+            GroupObj groupObj = (GroupObj) selectedList.getFirst();
+            groupObj.ungroup();
+            this.cleanAllSelected();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean renameSelectedObj() {
+        if (isNowRenameAble()) {
+            BasicObj obj = this.selectedList.getFirst();
+            String newName = JOptionPane.showInputDialog(obj.getLabelName());
+            obj.setLabelName(newName);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private void cleanAllSelected() {
@@ -46,10 +100,11 @@ public class SelectBehavior extends EditorBehavior {
             lowerY = tmp;
         }
 
-        System.out.printf("(%d,%d), (%d,%d)%n", upperX, upperY, lowerX, lowerY);
 
+        // add to front from back-est obj to front-est obj
         Component[] list = canvas.getComponents();
-        for (Component component : list) {
+        for (int i = list.length-1; i >= 0; i--) {
+            Component component = list[i];
             assert(component instanceof  BasicObj);
             BasicObj obj = (BasicObj) component;
 

@@ -4,6 +4,7 @@ import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
 
 public class UseCaseObj extends BasicObj {
@@ -30,8 +31,8 @@ public class UseCaseObj extends BasicObj {
     }
 
     @Override
-    public boolean isInShape(int x, int y) {
-        return this.ovalOutside.contains(x, y);
+    public boolean isInShape(MouseEvent event) {
+        return this.ovalOutside.contains(event.getX(), event.getY());
     }
 
     @Override

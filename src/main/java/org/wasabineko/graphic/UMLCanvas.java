@@ -38,14 +38,15 @@ public class UMLCanvas extends JPanel {
      * @param event the mouse event
      */
     private void passMouseEventToAgent(MouseEvent event) {
-        Component[] list = this.getComponents();
 
+        // detect objs from front-est to back-est
+        Component[] list = this.getComponents();
         for (Component component : list) {
             assert(component instanceof BasicObj);
 
             BasicObj obj = (BasicObj) component;
             MouseEvent objEvent = SwingUtilities.convertMouseEvent(this, event, obj);
-            if (obj.isInShape(objEvent.getX(), objEvent.getY())) {
+            if (obj.isInShape(objEvent)) {
                 BasicObj topParent = (BasicObj) obj.getTopParent();
                 MouseEvent newEvent = SwingUtilities.convertMouseEvent(this, event, topParent);
                 editorAgent.objMouseAction(topParent, newEvent);
