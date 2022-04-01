@@ -29,6 +29,8 @@ public class GeneralizationLine extends  ConnectionLine{
         polygon.addPoint(leftPoint.x, leftPoint.y);
         polygon.addPoint(rightPoint.x, rightPoint.y);
 
+        g2d.setPaint(Color.WHITE);
+        g2d.fillPolygon(polygon);
         g2d.setPaint(Color.BLACK);
         g2d.setStroke(new BasicStroke(2));
         g2d.drawPolygon(polygon);
