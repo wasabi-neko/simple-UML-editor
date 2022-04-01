@@ -67,8 +67,10 @@ public class SelectBehavior extends EditorBehavior {
     public boolean renameSelectedObj() {
         if (isNowRenameAble()) {
             BasicObj obj = this.selectedList.getFirst();
-            String newName = JOptionPane.showInputDialog(obj.getLabelName());
-            obj.setLabelName(newName);
+            String newName = JOptionPane.showInputDialog(obj, "rename the obj",obj.getLabelName());
+            if (newName != null) {
+                obj.setLabelName(newName);
+            }
             return true;
         } else {
             return false;
