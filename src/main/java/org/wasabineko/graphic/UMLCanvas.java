@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 /**
  * UMLCanvas
@@ -23,7 +24,7 @@ public class UMLCanvas extends JPanel {
         this.editorAgent = editorAgent;
         setLayout(null);
         setPreferredSize(GeneralConfig.getInstance().getDefaultCanvasSize());
-        setBackground(Color.lightGray); //TODO: get config color
+//        setBackground(Color.lightGray); //TODO: get config color
         addMouseListener(new UMLCanvasMouseEventListener(this));
     }
 
@@ -81,5 +82,18 @@ public class UMLCanvas extends JPanel {
         public void mouseEntered(MouseEvent mouseEvent) { /* do nothing */ }
         @Override
         public void mouseExited(MouseEvent mouseEvent) { /* do nothing */ }
+    }
+
+    private  record UMLCanvasMouseMotionListener(UMLCanvas targetCanvas) implements MouseMotionListener {
+
+        @Override
+        public void mouseDragged(MouseEvent mouseEvent) {
+
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent mouseEvent) {
+
+        }
     }
 }
