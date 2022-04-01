@@ -31,7 +31,7 @@ public abstract class ConnectionLine extends UMLObj {
 
     abstract protected void paintHead(Graphics2D g2d);
 
-    protected Point paintBody(Graphics2D g2d) {
+    protected void paintBody(Graphics2D g2d) {
         Point realFrom = this.getRealFromPoint();
         Point realTo = this.getRealToPoint();
 
@@ -39,7 +39,7 @@ public abstract class ConnectionLine extends UMLObj {
         g2d.setPaint(Color.black);
         g2d.setStroke(new BasicStroke(4));
         g2d.draw(line);
-        return new Point(realTo.x - realFrom.x, realTo.y - realFrom.y);
+        new Point(realTo.x - realFrom.x, realTo.y - realFrom.y);
     }
 
     @Override

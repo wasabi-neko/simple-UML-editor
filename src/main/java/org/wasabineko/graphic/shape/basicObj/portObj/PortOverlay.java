@@ -3,9 +3,7 @@ package org.wasabineko.graphic.shape.basicObj.portObj;
 import org.wasabineko.graphic.shape.basicObj.BasicObj;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.geom.Point2D;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,15 +11,13 @@ import java.util.List;
  * I'm just too tired to make another PortLayout abstraction for its future concreted child
  */
 public class PortOverlay extends JPanel {
-    private BasicObj master;
-    private List<Port> portList = new ArrayList<>();
+    private final List<Port> portList = new ArrayList<>();
 
     public PortOverlay() {
         super();
     }
 
     public void setMaster(BasicObj master) {
-        this.master = master;
         int portSize = 10;
 
         this.setBounds(0,  0, master.getWidth(), master.getHeight());

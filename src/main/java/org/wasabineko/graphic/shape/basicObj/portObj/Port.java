@@ -5,7 +5,6 @@ import org.wasabineko.graphic.shape.connectionLine.ConnectionLine;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Point2D;
 
 public class Port extends JPanel {
     final BasicObj master;

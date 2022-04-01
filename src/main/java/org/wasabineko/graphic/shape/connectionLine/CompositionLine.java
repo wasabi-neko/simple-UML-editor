@@ -5,7 +5,6 @@ import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 import org.wasabineko.utility.Vector2D;
 
 import java.awt.*;
-import java.awt.geom.Line2D;
 
 public class CompositionLine extends ConnectionLine {
     public CompositionLine(UMLCanvas canvas, Port portFrom, Port portTo) {

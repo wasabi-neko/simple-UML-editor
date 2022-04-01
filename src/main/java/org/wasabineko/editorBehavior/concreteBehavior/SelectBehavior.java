@@ -35,7 +35,7 @@ public class SelectBehavior extends EditorBehavior {
         return this.selectedList.size() == 1;
     }
 
-    public boolean groupSelectedObjs() {
+    public void groupSelectedObjs() {
         if (this.isNowGroupAble()) {
             Container container = selectedList.getFirst().getParent();
             GroupObj groupObj = new GroupObj();
@@ -47,33 +47,24 @@ public class SelectBehavior extends EditorBehavior {
             this.cleanAllSelected();
             groupObj.setSelected(true);
             this.selectedList.add(groupObj);
-            return true;
-        } else {
-            return false;
         }
     }
 
-    public boolean ungroupSelectedObj() {
+    public void ungroupSelectedObj() {
         if (this.isNowUngroupAble()) {
             GroupObj groupObj = (GroupObj) selectedList.getFirst();
             groupObj.ungroup();
             this.cleanAllSelected();
-            return true;
-        } else {
-            return false;
         }
     }
 
-    public boolean renameSelectedObj() {
+    public void renameSelectedObj() {
         if (isNowRenameAble()) {
             BasicObj obj = this.selectedList.getFirst();
             String newName = JOptionPane.showInputDialog(obj, "rename the obj",obj.getLabelName());
             if (newName != null) {
                 obj.setLabelName(newName);
             }
-            return true;
-        } else {
-            return false;
         }
     }
 
@@ -108,10 +99,9 @@ public class SelectBehavior extends EditorBehavior {
         Component[] list = canvas.getComponents();
         for (int i = list.length-1; i >= 0; i--) {
             Component component = list[i];
-            if (!(component instanceof  BasicObj)) {
+            if (!(component instanceof BasicObj obj)) {
                 continue;
             }
-            BasicObj obj = (BasicObj) component;
 
             if (obj.getX() > upperX
                     && obj.getY() > upperY
@@ -167,7 +157,7 @@ public class SelectBehavior extends EditorBehavior {
         this.cleanAllSelected();
         if (obj instanceof BasicObj) {
             this.selectedList.add((BasicObj) obj);
-            ((BasicObj) obj).setSelected(true);
+            obj.setSelected(true);
 //            obj.getTopParent().getParent().setComponentZOrder(obj, 0);  // bring to front
             obj.bringToFront();
         }

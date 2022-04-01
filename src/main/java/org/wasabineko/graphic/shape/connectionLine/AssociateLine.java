@@ -4,7 +4,6 @@ import org.wasabineko.graphic.UMLCanvas;
 import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 import org.wasabineko.utility.Vector2D;
 
-import javax.sound.sampled.Line;
 import java.awt.*;
 import java.awt.geom.Line2D;
 

@@ -7,8 +7,6 @@ import org.wasabineko.graphic.shape.basicObj.BasicObj;
 import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 import org.wasabineko.graphic.shape.connectionLine.ConnectionLine;
 
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class ConnectLineBehavior extends EditorBehavior {
@@ -18,7 +16,7 @@ public class ConnectLineBehavior extends EditorBehavior {
     }
 
 
-    private LineFactory lineFactory;
+    private final LineFactory lineFactory;
     private Port registerPort;
 
     public ConnectLineBehavior(LineFactory lineFactory) {

@@ -3,7 +3,6 @@ package org.wasabineko.graphic;
 import org.wasabineko.GeneralConfig;
 import org.wasabineko.editorBehavior.EditorBehaviorAgent;
 import org.wasabineko.graphic.shape.UMLObj;
-import org.wasabineko.graphic.shape.basicObj.BasicObj;
 
 import javax.swing.*;
 import java.awt.*;
