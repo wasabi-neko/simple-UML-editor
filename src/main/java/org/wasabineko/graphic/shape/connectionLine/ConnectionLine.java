@@ -21,18 +21,25 @@ public abstract class ConnectionLine extends UMLObj {
         this.setOpaque(false);
     }
 
+    protected Point getRealFromPoint() {
+        return portFrom.getConvertedCoordinate(this);
+    }
+
+    protected Point getRealToPoint() {
+        return portTo.getConvertedCoordinate(this);
+    }
+
     abstract protected void paintHead(Graphics2D g2d);
 
-    protected void paintBody(Graphics2D g2d) {
-        Point realFrom = portFrom.getConvertedCoordinate(this);
-        Point realTo = portTo.getConvertedCoordinate(this);
-
-        System.out.println("test paint port: " + realFrom + realTo);
+    protected Point paintBody(Graphics2D g2d) {
+        Point realFrom = this.getRealFromPoint();
+        Point realTo = this.getRealToPoint();
 
         Line2D line = new Line2D.Double(realFrom.x, realFrom.y, realTo.x, realTo.y);
         g2d.setPaint(Color.black);
         g2d.setStroke(new BasicStroke(4));
         g2d.draw(line);
+        return new Point(realTo.x - realFrom.x, realTo.y - realFrom.y);
     }
 
     @Override
@@ -47,6 +54,11 @@ public abstract class ConnectionLine extends UMLObj {
     //------------------------------------------------------------
     // ignore all group and select methods  //TODO: feels strange :thonk:
     //------------------------------------------------------------
+    @Override
+    public boolean isConnectAble() {
+        return false;
+    }
+
     @Override
     public boolean isInShape(MouseEvent event) {
         return false;

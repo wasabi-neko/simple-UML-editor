@@ -9,6 +9,8 @@ import org.wasabineko.editorBehavior.concreteBehavior.SelectBehavior;
 import org.wasabineko.graphic.shape.basicObj.ClassObj;
 import org.wasabineko.graphic.shape.basicObj.UseCaseObj;
 import org.wasabineko.graphic.shape.connectionLine.AssociateLine;
+import org.wasabineko.graphic.shape.connectionLine.CompositionLine;
+import org.wasabineko.graphic.shape.connectionLine.GeneralizationLine;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,11 +37,15 @@ public class ToolBar extends JPanel {
         ToolButton useCaseButt = new ToolButton("useCase", new CreateObjBehavior(UseCaseObj::new));
         ToolButton classButt = new ToolButton("class", new CreateObjBehavior(ClassObj::new));
         ToolButton associateLineButt = new ToolButton("associate line", new ConnectLineBehavior(AssociateLine::new));
+        ToolButton compositionLineButt = new ToolButton("composition line", new ConnectLineBehavior(CompositionLine::new));
+        ToolButton generalizationLineButt = new ToolButton("generalization line", new ConnectLineBehavior(GeneralizationLine::new));
 
         this.add(selectButt);
         this.add(useCaseButt);
         this.add(classButt);
         this.add(associateLineButt);
+        this.add(compositionLineButt);
+        this.add(generalizationLineButt);
     }
 
     public void add(ToolButton butt) {

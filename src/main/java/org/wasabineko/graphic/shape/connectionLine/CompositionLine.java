@@ -4,13 +4,11 @@ import org.wasabineko.graphic.UMLCanvas;
 import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 import org.wasabineko.utility.Vector2D;
 
-import javax.sound.sampled.Line;
 import java.awt.*;
 import java.awt.geom.Line2D;
 
-public class AssociateLine extends ConnectionLine {
-
-    public AssociateLine(UMLCanvas canvas, Port portFrom, Port portTo) {
+public class CompositionLine extends ConnectionLine {
+    public CompositionLine(UMLCanvas canvas, Port portFrom, Port portTo) {
         super(canvas, portFrom, portTo);
     }
 
@@ -27,13 +25,15 @@ public class AssociateLine extends ConnectionLine {
 
         Point leftPoint = bodyTo.add(left).toPonint();
         Point rightPoint = bodyTo.add(right).toPonint();
-        Line2D lineL = new Line2D.Double(bodyTo.toPonint(), leftPoint);
-        Line2D lineR = new Line2D.Double(bodyTo.toPonint(), rightPoint);
+        Point downPoint = bodyTo.add(left).add(right).toPonint();
+        Polygon polygon = new Polygon();
+        polygon.addPoint(bodyTo.toPonint().x, bodyTo.toPonint().y);
+        polygon.addPoint(leftPoint.x, leftPoint.y);
+        polygon.addPoint(downPoint.x, downPoint.y);
+        polygon.addPoint(rightPoint.x, rightPoint.y);
 
         g2d.setPaint(Color.BLACK);
         g2d.setStroke(new BasicStroke(2));
-        g2d.draw(lineL);
-        g2d.draw(lineR);
+        g2d.drawPolygon(polygon);
     }
-
 }

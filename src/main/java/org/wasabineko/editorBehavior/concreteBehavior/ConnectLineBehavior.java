@@ -48,15 +48,24 @@ public class ConnectLineBehavior extends EditorBehavior {
 
     @Override
     public void objReleaseAction(UMLObj obj, MouseEvent event) {
-        if (!(obj instanceof BasicObj && obj.isConnectAble())) {   //TODO: maybe change it to raise exception. need a better way to prevent down cast the UMLObj
+        if ( registerPort == null
+            || !(obj instanceof BasicObj)
+            || !obj.isConnectAble()) {   //TODO: maybe change it to raise exception. need a better way to prevent down cast the UMLObj
             return;
         }
         Port toPort = ((BasicObj)obj).getPortOverlay().getClosetPort(event.getX(), event.getY());
         UMLCanvas canvas = (UMLCanvas) obj.getTopParent().getParent();
         ConnectionLine line = this.lineFactory.createLine(canvas, registerPort, toPort);
         canvas.add(line);
-        int zOrder = canvas.getComponentZOrder(toPort.getMaster());
+
+        int toOrder = canvas.getComponentZOrder(toPort.getMaster());
+        int fromOrder = canvas.getComponentZOrder(registerPort.getMaster());
+        int zOrder = toOrder;
+        if (zOrder > fromOrder) {zOrder = fromOrder;}
+
         canvas.setComponentZOrder(line, zOrder);
         canvas.repaint();
+
+        this.registerPort = null;   // reset
     }
 }
