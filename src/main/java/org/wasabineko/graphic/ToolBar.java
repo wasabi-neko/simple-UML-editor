@@ -46,6 +46,7 @@ public class ToolBar extends JPanel {
         this.add(associateLineButt);
         this.add(compositionLineButt);
         this.add(generalizationLineButt);
+        selectButt.doClick();       // enter the select mode by default
     }
 
     public void add(ToolButton butt) {
@@ -59,6 +60,7 @@ public class ToolBar extends JPanel {
 
         public ToolButton(String name, EditorBehavior editorBehavior) {
             super(name);
+            this.setPreferredSize(new Dimension(100, 100));
             this.addActionListener(actionEvent -> parentBar.editorAgent.setEditorBehavior(editorBehavior));
         }
     }

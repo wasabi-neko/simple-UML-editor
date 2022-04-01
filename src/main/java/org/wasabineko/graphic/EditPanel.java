@@ -11,7 +11,6 @@ public class EditPanel extends JPanel {
         setLayout(new BorderLayout());
 
         ToolBar toolBar = new ToolBar(editorAgent);
-//        TODO: toolBar init state to selectMode
         UMLCanvas canvas = new UMLCanvas(editorAgent);
 
         this.add(toolBar, BorderLayout.WEST);
