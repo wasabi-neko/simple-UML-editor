@@ -117,14 +117,16 @@ public class SelectBehavior extends EditorBehavior {
                     && obj.getY() + obj.getHeight() < lowerY) {
                 obj.setSelected(true);
                 this.selectedList.add(obj);
-                obj.getTopParent().getParent().setComponentZOrder(obj, 0);
+//                obj.getTopParent().getParent().setComponentZOrder(obj, 0);
+                obj.bringToFront();
             }
         }
     }
 
     private void dragObjToReleasePoint(BasicObj obj, Point objShift, MouseEvent event) {
         obj.setLocation((int) (event.getX() - objShift.getX()), (int) (event.getY() - objShift.getY()));
-        obj.getTopParent().getParent().setComponentZOrder(obj, 0);
+//        obj.getTopParent().getParent().setComponentZOrder(obj, 0);
+        obj.bringToFront();
         obj.repaintConnectedLine();
     }
 
@@ -164,7 +166,8 @@ public class SelectBehavior extends EditorBehavior {
         if (obj instanceof BasicObj) {
             this.selectedList.add((BasicObj) obj);
             ((BasicObj) obj).setSelected(true);
-            obj.getTopParent().getParent().setComponentZOrder(obj, 0);  // bring to front
+//            obj.getTopParent().getParent().setComponentZOrder(obj, 0);  // bring to front
+            obj.bringToFront();
         }
     }
 

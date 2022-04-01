@@ -14,4 +14,10 @@ public abstract class UMLObj extends JPanel {
     public abstract boolean isSelectable();
     public abstract boolean isConnectAble();
     public abstract void setSelected(boolean isSelected);
+
+    public void bringToFront() {
+        if (this.getParent() != null) {
+            this.getParent().setComponentZOrder(this, 0);
+        }
+    }
 }

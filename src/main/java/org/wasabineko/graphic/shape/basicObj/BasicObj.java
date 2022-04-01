@@ -1,6 +1,7 @@
 package org.wasabineko.graphic.shape.basicObj;
 
 import org.jetbrains.annotations.NotNull;
+import org.wasabineko.graphic.UMLCanvas;
 import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
@@ -111,6 +112,23 @@ public abstract class BasicObj extends UMLObj {
     // Drawing relative Methods
     //------------------------------------------------------------
     abstract public void paintSelf(Graphics2D g2d);
+
+    @Override
+    public void bringToFront() {
+        if (this.getTopParent().getParent() == null) {
+            return;
+        }
+
+        this.getParent().setComponentZOrder(this, 0);
+        UMLCanvas canvas = (UMLCanvas) this.getTopParent().getParent();
+
+        for (Port port : this.portOverlay.getPortList()) {
+            if (port.getConnectionLine() != null) {
+                canvas.setComponentZOrder(port.getConnectionLine(), 0);
+                port.repaintConnectedLine();
+            }
+        }
+    }
 
     public void repaintConnectedLine() {
         for (Port port : this.portOverlay.getPortList()) {
