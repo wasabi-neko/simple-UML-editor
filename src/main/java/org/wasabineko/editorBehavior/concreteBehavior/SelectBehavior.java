@@ -174,6 +174,10 @@ public class SelectBehavior extends EditorBehavior {
     @Override
     public void objPressAction(UMLObj obj, MouseEvent event) {
         assert (obj instanceof BasicObj);
+        this.cleanAllSelected();
+        obj.setSelected(true);
+        this.selectedList.add((BasicObj) obj);
+
         this.objInternalShift.setLocation(event.getX(), event.getY());
         this.isDragObj = true;
         this.registerObj = (BasicObj) obj;
