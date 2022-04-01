@@ -50,7 +50,8 @@ public class ConnectLineBehavior extends EditorBehavior {
     public void objReleaseAction(UMLObj obj, MouseEvent event) {
         if ( registerPort == null
             || !(obj instanceof BasicObj)
-            || !obj.isConnectAble()) {   //TODO: maybe change it to raise exception. need a better way to prevent down cast the UMLObj
+            || !obj.isConnectAble()
+            || obj == registerPort.getMaster()) {   //TODO: maybe change it to raise exception. need a better way to prevent down cast the UMLObj
             return;
         }
         Port toPort = ((BasicObj)obj).getPortOverlay().getClosetPort(event.getX(), event.getY());
