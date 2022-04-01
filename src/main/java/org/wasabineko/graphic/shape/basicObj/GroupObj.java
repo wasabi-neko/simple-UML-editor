@@ -64,6 +64,16 @@ public class GroupObj extends BasicObj {
         container.repaint();
     }
 
+    @Override
+    public void bringToFront() {
+        super.bringToFront();
+        Component[] children = this.getComponents();
+        for (int i = children.length - 1; i >= 0; i--) {
+            BasicObj obj = (BasicObj) children[i];
+            obj.bringToFront();
+        }
+    }
+
     /**
      * return true if any one of its child contains the provided coordinate
      * @param event the mouse event (base on the obj itself)
