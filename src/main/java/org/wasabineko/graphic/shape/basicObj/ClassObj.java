@@ -5,6 +5,7 @@ import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 
 public class ClassObj extends BasicObj{
@@ -20,7 +21,7 @@ public class ClassObj extends BasicObj{
         reactInside = new Rectangle2D.Double(borderSize, borderSize, 100 - 2*borderSize, 150 - 2*borderSize );
 
         setBounds(posX, posY, 100, 150);
-        nameLabel.setBounds(0, 0, this.getWidth(), this.getHeight());
+        nameLabel.setBounds(0, 0, this.getWidth(), this.getHeight() / 3);
         this.add(nameLabel);
         this.add(portOverlay);
         portOverlay.setMaster(this);
@@ -40,5 +41,12 @@ public class ClassObj extends BasicObj{
         g2d.fill(reactOutLine);
         g2d.setPaint(Color.LIGHT_GRAY);
         g2d.fill(reactInside);
+
+        Line2D line1 = new Line2D.Double(0, this.getHeight()/3.0, this.getWidth(), this.getHeight()/3.0);
+        Line2D line2 = new Line2D.Double(0, this.getHeight()*2/3.0, this.getWidth(), this.getHeight()*2/3.0);
+        g2d.setPaint(Color.BLACK);
+        g2d.setStroke(new BasicStroke(2));
+        g2d.draw(line1);
+        g2d.draw(line2);
     }
 }
