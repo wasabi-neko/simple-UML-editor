@@ -11,6 +11,7 @@ import org.wasabineko.graphic.shape.basicObj.UseCaseObj;
 import org.wasabineko.graphic.shape.connectionLine.AssociateLine;
 import org.wasabineko.graphic.shape.connectionLine.CompositionLine;
 import org.wasabineko.graphic.shape.connectionLine.GeneralizationLine;
+import org.wasabineko.graphic.toolButton.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,12 +34,12 @@ public class ToolBar extends JPanel {
         setBackground(Color.CYAN);
 
         // buttons
-        ToolButton selectButt = new ToolButton("select", new SelectBehavior());
-        ToolButton useCaseButt = new ToolButton("useCase", new CreateObjBehavior(UseCaseObj::new));
-        ToolButton classButt = new ToolButton("class", new CreateObjBehavior(ClassObj::new));
-        ToolButton associateLineButt = new ToolButton("associate line", new ConnectLineBehavior(AssociateLine::new));
-        ToolButton compositionLineButt = new ToolButton("composition line", new ConnectLineBehavior(CompositionLine::new));
-        ToolButton generalizationLineButt = new ToolButton("generalization line", new ConnectLineBehavior(GeneralizationLine::new));
+        ToolButton selectButt = new SelectButton();
+        ToolButton useCaseButt = new UseCaseButton();
+        ToolButton classButt = new ClassButton();
+        ToolButton associateLineButt = new AssociationLineButton();
+        ToolButton compositionLineButt = new CompositionLineButton();
+        ToolButton generalizationLineButt = new GeneralLineButton();
 
         this.add(selectButt);
         this.add(useCaseButt);
@@ -52,16 +53,11 @@ public class ToolBar extends JPanel {
     public void add(ToolButton butt) {
         super.add(butt);
         this.buttonGroup.add(butt);
-        butt.parentBar = this;
+        butt.setParentBar(this);
     }
 
-    private static class ToolButton extends JToggleButton {
-        private ToolBar parentBar;
-
-        public ToolButton(String name, EditorBehavior editorBehavior) {
-            super(name);
-            this.setPreferredSize(new Dimension(100, 100));
-            this.addActionListener(actionEvent -> parentBar.editorAgent.setEditorBehavior(editorBehavior));
-        }
+    public EditorBehaviorAgent getEditorAgent() {
+        return this.editorAgent;
     }
+
 }
