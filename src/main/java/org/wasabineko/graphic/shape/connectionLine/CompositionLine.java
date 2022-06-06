@@ -7,7 +7,7 @@ import org.wasabineko.utility.Vector2D;
 import java.awt.*;
 
 public class CompositionLine extends ConnectionLine {
-    public CompositionLine(UMLCanvas canvas, Port portFrom, Port portTo) {
+    public CompositionLine(Container canvas, Port portFrom, Port portTo) {
         super(canvas, portFrom, portTo);
     }
 

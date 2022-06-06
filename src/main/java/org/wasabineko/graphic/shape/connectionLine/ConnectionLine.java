@@ -11,7 +11,7 @@ import java.awt.geom.Line2D;
 public abstract class ConnectionLine extends UMLObj {
     private final Port portFrom, portTo;
 
-    public ConnectionLine(UMLCanvas canvas, Port portFrom, Port portTo) {
+    public ConnectionLine(Container canvas, Port portFrom, Port portTo) {
         this.portFrom = portFrom;
         this.portTo = portTo;
         portFrom.addConnectionLine(this, true);

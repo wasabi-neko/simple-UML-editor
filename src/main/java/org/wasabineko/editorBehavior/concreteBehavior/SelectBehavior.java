@@ -76,7 +76,7 @@ public class SelectBehavior extends EditorBehavior {
     }
 
     //TODO: this method logic should move to UMLCanvas
-    private void selectArea(UMLCanvas canvas, MouseEvent event) {
+    private void selectArea(Container canvas, MouseEvent event) {
         int upperX = event.getX();
         int upperY = event.getY();
         int lowerX = (int) pressedCoordinate.getX();
@@ -183,8 +183,7 @@ public class SelectBehavior extends EditorBehavior {
             dragObjToReleasePoint(this.registerObj, this.objInternalShift, newEven);
         } else {
             Container component = obj.getTopParent().getParent();
-            assert (component instanceof UMLCanvas);
-            selectArea((UMLCanvas) component, newEven);
+            selectArea(component, newEven);
         }
 
     }

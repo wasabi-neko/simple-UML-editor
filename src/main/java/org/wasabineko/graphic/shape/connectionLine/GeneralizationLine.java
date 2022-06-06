@@ -7,7 +7,7 @@ import org.wasabineko.utility.Vector2D;
 import java.awt.*;
 
 public class GeneralizationLine extends  ConnectionLine{
-    public GeneralizationLine(UMLCanvas canvas, Port portFrom, Port portTo) {
+    public GeneralizationLine(Container canvas, Port portFrom, Port portTo) {
         super(canvas, portFrom, portTo);
     }
 

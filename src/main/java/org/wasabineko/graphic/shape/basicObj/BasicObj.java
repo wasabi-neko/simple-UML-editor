@@ -1,7 +1,6 @@
 package org.wasabineko.graphic.shape.basicObj;
 
 import org.jetbrains.annotations.NotNull;
-import org.wasabineko.graphic.UMLCanvas;
 import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
@@ -135,7 +134,7 @@ public abstract class BasicObj extends UMLObj {
         }
 
         this.getParent().setComponentZOrder(this, 0);
-        UMLCanvas canvas = (UMLCanvas) this.getTopParent().getParent();
+        Container canvas = this.getTopParent().getParent();
 
         for (Port port : this.portOverlay.getPortList()) {
             if (port.getLineList() != null) {

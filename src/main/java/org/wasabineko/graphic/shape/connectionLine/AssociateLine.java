@@ -9,7 +9,7 @@ import java.awt.geom.Line2D;
 
 public class AssociateLine extends ConnectionLine {
 
-    public AssociateLine(UMLCanvas canvas, Port portFrom, Port portTo) {
+    public AssociateLine(Container canvas, Port portFrom, Port portTo) {
         super(canvas, portFrom, portTo);
     }
 

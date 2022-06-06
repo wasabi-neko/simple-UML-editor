@@ -7,12 +7,13 @@ import org.wasabineko.graphic.shape.basicObj.BasicObj;
 import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 import org.wasabineko.graphic.shape.connectionLine.ConnectionLine;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class ConnectLineBehavior extends EditorBehavior {
 
     public interface LineFactory {
-        ConnectionLine createLine(UMLCanvas canvas, Port from, Port to);
+        ConnectionLine createLine(Container canvas, Port from, Port to);
     }
 
 
@@ -50,7 +51,7 @@ public class ConnectLineBehavior extends EditorBehavior {
         }
 
         Port toPort = obj.getClosetPort(event.getX(), event.getY());
-        UMLCanvas canvas = (UMLCanvas) obj.getTopParent().getParent();
+        Container canvas = obj.getTopParent().getParent();
         ConnectionLine line = this.lineFactory.createLine(canvas, registerPort, toPort);
         canvas.add(line);
 
