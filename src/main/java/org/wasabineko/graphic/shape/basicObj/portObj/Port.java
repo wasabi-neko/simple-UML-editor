@@ -5,10 +5,11 @@ import org.wasabineko.graphic.shape.connectionLine.ConnectionLine;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Port extends JPanel {
     final BasicObj master;
-    protected ConnectionLine connectionLine;
+    protected ArrayList<ConnectionLine> lineList = new ArrayList<>();
     protected boolean isConnectedFrom;
 
     public Port(BasicObj master, int posX, int posY, int size) {
@@ -19,8 +20,8 @@ public class Port extends JPanel {
         this.setOpaque(true);
     }
 
-    public void setConnectionLine(ConnectionLine connectionLine, boolean isConnectedFrom) {
-        this.connectionLine = connectionLine;
+    public void addConnectionLine(ConnectionLine connectionLine, boolean isConnectedFrom) {
+        lineList.add(connectionLine);
         this.isConnectedFrom = isConnectedFrom;
     }
 
@@ -28,13 +29,13 @@ public class Port extends JPanel {
         return this.isConnectedFrom;
     }
 
-    public ConnectionLine getConnectionLine() {
-        return this.connectionLine;
+    public ArrayList<ConnectionLine> getLineList() {
+        return lineList;
     }
 
     public void repaintConnectedLine() {
-        if (this.connectionLine != null) {
-            this.connectionLine.repaint();
+        for (ConnectionLine line : lineList) {
+            line.repaint();
         }
     }
 

@@ -14,8 +14,8 @@ public abstract class ConnectionLine extends UMLObj {
     public ConnectionLine(UMLCanvas canvas, Port portFrom, Port portTo) {
         this.portFrom = portFrom;
         this.portTo = portTo;
-        portFrom.setConnectionLine(this, true);
-        portTo.setConnectionLine(this, false);
+        portFrom.addConnectionLine(this, true);
+        portTo.addConnectionLine(this, false);
 
         this.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         this.setOpaque(false);
@@ -66,9 +66,6 @@ public abstract class ConnectionLine extends UMLObj {
 
     @Override
     public UMLObj getTopParent() { return null; }
-
-    @Override
-    public boolean isSelectable() { return false; }
 
     @Override
     public void setSelected(boolean isSelected) { /* do nothing */ }

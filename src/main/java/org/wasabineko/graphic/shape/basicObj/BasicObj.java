@@ -5,6 +5,7 @@ import org.wasabineko.graphic.UMLCanvas;
 import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
+import org.wasabineko.graphic.shape.connectionLine.ConnectionLine;
 
 import javax.swing.*;
 import java.awt.*;
@@ -122,8 +123,10 @@ public abstract class BasicObj extends UMLObj {
         UMLCanvas canvas = (UMLCanvas) this.getTopParent().getParent();
 
         for (Port port : this.portOverlay.getPortList()) {
-            if (port.getConnectionLine() != null) {
-                canvas.setComponentZOrder(port.getConnectionLine(), 0);
+            if (port.getLineList() != null) {
+                for (ConnectionLine line : port.getLineList()) {
+                    canvas.setComponentZOrder(line, 0);
+                }
                 port.repaintConnectedLine();
             }
         }
