@@ -39,20 +39,17 @@ public class ConnectLineBehavior extends EditorBehavior {
 
     @Override
     public void objPressAction(UMLObj obj, MouseEvent event) {
-        if (obj instanceof BasicObj && obj.isConnectAble()) {
-            this.registerPort = ((BasicObj)obj).getPortOverlay().getClosetPort(event.getX(), event.getY());
-        }
+        this.registerPort = obj.getClosetPort(event.getX(), event.getY());
     }
 
     @Override
     public void objReleaseAction(UMLObj obj, MouseEvent event) {
-        if ( registerPort == null
-            || !(obj instanceof BasicObj)
-            || !obj.isConnectAble()
-            || obj == registerPort.getMaster()) {   //TODO: maybe change it to raise exception. need a better way to prevent down cast the UMLObj
+        // check if the formPort is null and if both fromPort and ToPort is in the same obj
+        if (registerPort == null || obj == registerPort.getMaster()) {
             return;
         }
-        Port toPort = ((BasicObj)obj).getPortOverlay().getClosetPort(event.getX(), event.getY());
+
+        Port toPort = obj.getClosetPort(event.getX(), event.getY());
         UMLCanvas canvas = (UMLCanvas) obj.getTopParent().getParent();
         ConnectionLine line = this.lineFactory.createLine(canvas, registerPort, toPort);
         canvas.add(line);

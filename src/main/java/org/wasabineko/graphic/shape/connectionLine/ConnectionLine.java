@@ -60,6 +60,11 @@ public abstract class ConnectionLine extends UMLObj {
     }
 
     @Override
+    public boolean isSelectable() {
+        return  false;
+    }
+
+    @Override
     public boolean isInShape(MouseEvent event) {
         return false;
     }

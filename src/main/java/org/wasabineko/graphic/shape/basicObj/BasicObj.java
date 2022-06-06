@@ -9,6 +9,7 @@ import org.wasabineko.graphic.shape.connectionLine.ConnectionLine;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.Objects;
 
 public abstract class BasicObj extends UMLObj {
@@ -44,6 +45,20 @@ public abstract class BasicObj extends UMLObj {
 
     public PortOverlay getPortOverlay() {
         return this.portOverlay;
+    }
+
+    public Port getClosetPort(int x, int y) {
+        Port minPort = this.portOverlay.getPortList().get(1);
+        double minDistance = Double.MAX_VALUE;
+        for (Port port : this.portOverlay.getPortList()) {
+            double distane = Point2D.distance(port.getX(), port.getY(), x, y);
+            if (distane < minDistance) {
+                minDistance = distane;
+                minPort = port;
+            }
+        }
+
+        return minPort;
     }
 
     //------------------------------------------------------------

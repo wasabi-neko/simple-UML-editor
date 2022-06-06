@@ -43,18 +43,4 @@ public class PortOverlay extends JPanel {
     public List<Port> getPortList() {
         return  this.portList;
     }
-
-    public Port getClosetPort(int x, int y) {
-        Port minPort = this.portList.get(1);
-        double minDistance = Double.MAX_VALUE;
-        for (Port port : this.portList) {
-            double distane = Point2D.distance(port.getX(), port.getY(), x, y);
-            if (distane < minDistance) {
-                minDistance = distane;
-                minPort = port;
-            }
-        }
-
-        return minPort;
-    }
 }
