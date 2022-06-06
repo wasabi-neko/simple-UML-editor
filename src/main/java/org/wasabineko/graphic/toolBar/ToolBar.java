@@ -11,12 +11,9 @@ import java.awt.*;
  * target editorAgent.
  */
 public class ToolBar extends JPanel {
-    final EditorBehaviorAgent editorAgent;
     final ButtonGroup buttonGroup;
 
-    public ToolBar(EditorBehaviorAgent editorAgent) {
-        super();
-        this.editorAgent = editorAgent;
+    public ToolBar() {
         this.buttonGroup = new ButtonGroup();
 
         // appearance setting
@@ -45,9 +42,4 @@ public class ToolBar extends JPanel {
         this.buttonGroup.add(butt);
         butt.setParentBar(this);
     }
-
-    public EditorBehaviorAgent getEditorAgent() {
-        return this.editorAgent;
-    }
-
 }

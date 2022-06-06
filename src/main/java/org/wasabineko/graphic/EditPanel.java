@@ -7,12 +7,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class EditPanel extends JPanel {
-    public EditPanel(EditorBehaviorAgent editorAgent) {
-        super();
+    public EditPanel() {
         setLayout(new BorderLayout());
 
-        ToolBar toolBar = new ToolBar(editorAgent);
-        UMLCanvas canvas = new UMLCanvas(editorAgent);
+        ToolBar toolBar = new ToolBar();
+        UMLCanvas canvas = new UMLCanvas();
 
         this.add(toolBar, BorderLayout.WEST);
         this.add(canvas, BorderLayout.CENTER);

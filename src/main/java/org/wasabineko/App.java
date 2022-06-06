@@ -12,9 +12,8 @@ public class App {
 
         JFrame frame = new JFrame(GeneralConfig.getInstance().getWinTitle());
 
-        EditorBehaviorAgent editorAgent = EditorBehaviorAgent.getInstance();
-        EditPanel editPanel = new EditPanel(editorAgent);
-        MenuBar menuBar = new MenuBar(editorAgent);
+        EditPanel editPanel = new EditPanel();
+        MenuBar menuBar = new MenuBar();
 
         frame.setContentPane(editPanel);
         frame.setJMenuBar(menuBar);

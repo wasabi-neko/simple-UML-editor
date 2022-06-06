@@ -17,22 +17,13 @@ import java.awt.event.MouseMotionListener;
  * - The mouseEvent Logic should leave to EditorBehavior to implement
  */
 public class UMLCanvas extends JPanel {
-    private EditorBehaviorAgent editorAgent;
 
-    public UMLCanvas(EditorBehaviorAgent editorAgent) {
-        super();
-        this.editorAgent = editorAgent;
+    public UMLCanvas() {
         setLayout(null);
         setPreferredSize(GeneralConfig.getInstance().getDefaultCanvasSize());
 //        setBackground(Color.lightGray); //TODO: get config color
         addMouseListener(new UMLCanvasMouseEventListener(this));
     }
-
-    public void setEditorAgent(EditorBehaviorAgent editorAgent) {
-        this.editorAgent = editorAgent;
-    }
-    public EditorBehaviorAgent getEditorAgent() { return this.editorAgent; }
-
 
     /**
      * pass the mouse event to its EditorBehaviorAgent to perform the action
@@ -50,13 +41,13 @@ public class UMLCanvas extends JPanel {
             if (obj.isInShape(objEvent)) {
                 UMLObj topParent =  obj.getTopParent();
                 MouseEvent newEvent = SwingUtilities.convertMouseEvent(this, event, topParent);
-                editorAgent.objMouseAction(topParent, newEvent);
+                EditorBehaviorAgent.getInstance().objMouseAction(topParent, newEvent);
                 return;
             }
         }
 
         // if non-of the objets contains the mouse, then perform pure canvas mouse event
-        editorAgent.canvasMouseAction(this, event);
+        EditorBehaviorAgent.getInstance().canvasMouseAction(this, event);
     }
 
     /**

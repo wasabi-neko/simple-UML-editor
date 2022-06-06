@@ -11,12 +11,8 @@ import java.awt.event.*;
 import java.util.LinkedList;
 
 public class MenuBar extends JMenuBar {
-    final EditorBehaviorAgent editorAgent;
 
-    public MenuBar(EditorBehaviorAgent editorAgent) {
-        super();
-        this.editorAgent = editorAgent;
-
+    public MenuBar() {
         JMenu fileMenu = new JMenu("File");
         EditMenu editMenu = new EditMenu();
 
