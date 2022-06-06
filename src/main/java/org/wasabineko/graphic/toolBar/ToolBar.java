@@ -1,17 +1,7 @@
-package org.wasabineko.graphic;
+package org.wasabineko.graphic.toolBar;
 
 import org.wasabineko.GeneralConfig;
-import org.wasabineko.editorBehavior.EditorBehavior;
 import org.wasabineko.editorBehavior.EditorBehaviorAgent;
-import org.wasabineko.editorBehavior.concreteBehavior.ConnectLineBehavior;
-import org.wasabineko.editorBehavior.concreteBehavior.CreateObjBehavior;
-import org.wasabineko.editorBehavior.concreteBehavior.SelectBehavior;
-import org.wasabineko.graphic.shape.basicObj.ClassObj;
-import org.wasabineko.graphic.shape.basicObj.UseCaseObj;
-import org.wasabineko.graphic.shape.connectionLine.AssociateLine;
-import org.wasabineko.graphic.shape.connectionLine.CompositionLine;
-import org.wasabineko.graphic.shape.connectionLine.GeneralizationLine;
-import org.wasabineko.graphic.toolButton.*;
 
 import javax.swing.*;
 import java.awt.*;

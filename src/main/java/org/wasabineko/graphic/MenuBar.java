@@ -92,11 +92,12 @@ public class MenuBar extends JMenuBar {
         public EditMenu(MenuBar parent) {
             super("Edit");
             this.parent = parent;
+
+            // turnoff the sub items when the condition didn't match
             this.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mousePressed(MouseEvent e) {
                     for (SelectBehaviorConditionItem conditionItem : conditionItemList) {
-                        System.out.println("test turn:" + conditionItem.workCondition());
                         conditionItem.setEnabled(conditionItem.workCondition());
                     }
                 }

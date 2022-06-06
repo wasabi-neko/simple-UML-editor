@@ -1,4 +1,4 @@
-package org.wasabineko.graphic.toolButton;
+package org.wasabineko.graphic.toolBar;
 
 import org.wasabineko.editorBehavior.concreteBehavior.ConnectLineBehavior;
 import org.wasabineko.graphic.shape.connectionLine.AssociateLine;
