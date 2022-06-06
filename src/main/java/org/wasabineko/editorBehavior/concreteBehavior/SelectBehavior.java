@@ -32,7 +32,7 @@ public class SelectBehavior extends EditorBehavior {
     }
 
     public boolean isNowRenameAble() {
-        return this.selectedList.size() == 1;
+        return selectedList.size() == 1 && selectedList.getFirst() instanceof  GroupObj;
     }
 
     public void groupSelectedObjs() {
