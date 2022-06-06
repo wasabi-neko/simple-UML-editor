@@ -2,7 +2,7 @@ package org.wasabineko;
 
 import org.wasabineko.editorBehavior.EditorBehaviorAgent;
 import org.wasabineko.graphic.EditPanel;
-import org.wasabineko.graphic.MenuBar;
+import org.wasabineko.graphic.Menu.MenuBar;
 
 import javax.swing.*;
 
@@ -12,7 +12,7 @@ public class App {
 
         JFrame frame = new JFrame(GeneralConfig.getInstance().getWinTitle());
 
-        EditorBehaviorAgent editorAgent = new EditorBehaviorAgent();
+        EditorBehaviorAgent editorAgent = EditorBehaviorAgent.getInstance();
         EditPanel editPanel = new EditPanel(editorAgent);
         MenuBar menuBar = new MenuBar(editorAgent);
 
