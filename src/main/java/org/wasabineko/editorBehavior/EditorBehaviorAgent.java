@@ -9,9 +9,24 @@ import java.awt.event.MouseEvent;
 import java.util.Objects;
 
 public class EditorBehaviorAgent {
+    // --------------------------------------------------
+    // Singleton
+    // --------------------------------------------------
+    private static EditorBehaviorAgent instance;
+
+    public static EditorBehaviorAgent getInstance() {
+        if (EditorBehaviorAgent.instance == null) {
+            EditorBehaviorAgent.instance = new EditorBehaviorAgent();
+        }
+        return EditorBehaviorAgent.instance;
+    }
+
+    // --------------------------------------------------
+    // Main
+    // --------------------------------------------------
     private EditorBehavior editorBehavior;
 
-    public EditorBehaviorAgent() {
+    private EditorBehaviorAgent() {
         this.editorBehavior = new EmptyBehavior();
     }
 
