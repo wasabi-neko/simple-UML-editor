@@ -1,6 +1,7 @@
 package org.wasabineko.graphic.shape.basicObj;
 
-import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
+import org.wasabineko.graphic.shape.basicObj.portObj.portOverlay.BasicPortOverlay;
+import org.wasabineko.graphic.shape.basicObj.portObj.portOverlay.PortOverlay;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ public class ClassObj extends BasicObj{
 
 
     public ClassObj(int posX, int posY) {
-        super(posX, posY, true, new JLabel("class", SwingConstants.CENTER), new PortOverlay());
+        super(posX, posY, true, new JLabel("class", SwingConstants.CENTER), new BasicPortOverlay());
 
         int borderSize = 2;
         reactOutLine = new Rectangle2D.Double(0, 0, 100, 150);
@@ -24,7 +25,7 @@ public class ClassObj extends BasicObj{
         nameLabel.setBounds(0, 0, this.getWidth(), this.getHeight() / 3);
         this.add(nameLabel);
         this.add(portOverlay);
-        portOverlay.setMaster(this);
+        portOverlay.init(this);
 
         setLayout(null);
         setOpaque(false);

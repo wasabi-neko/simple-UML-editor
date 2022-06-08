@@ -25,7 +25,6 @@ public abstract class UMLObj extends JPanel {
     /* percolating up the method from this class's child */
     public void setSelected(boolean isSelected) { /*do nothing*/ }
     public Port getClosetPort(int x, int y) {
-
         return null;
     }
 }

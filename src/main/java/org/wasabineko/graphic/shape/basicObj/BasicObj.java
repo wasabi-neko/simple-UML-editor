@@ -3,7 +3,7 @@ package org.wasabineko.graphic.shape.basicObj;
 import org.jetbrains.annotations.NotNull;
 import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.portObj.Port;
-import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
+import org.wasabineko.graphic.shape.basicObj.portObj.portOverlay.PortOverlay;
 import org.wasabineko.graphic.shape.connectionLine.ConnectionLine;
 
 import javax.swing.*;
@@ -47,17 +47,7 @@ public abstract class BasicObj extends UMLObj {
     }
 
     public Port getClosetPort(int x, int y) {
-        Port minPort = this.portOverlay.getPortList().get(1);
-        double minDistance = Double.MAX_VALUE;
-        for (Port port : this.portOverlay.getPortList()) {
-            double distane = Point2D.distance(port.getX(), port.getY(), x, y);
-            if (distane < minDistance) {
-                minDistance = distane;
-                minPort = port;
-            }
-        }
-
-        return minPort;
+        return this.portOverlay.getClosetPort(x, y);
     }
 
     //------------------------------------------------------------

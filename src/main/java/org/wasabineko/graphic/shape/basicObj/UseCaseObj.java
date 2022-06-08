@@ -1,6 +1,7 @@
 package org.wasabineko.graphic.shape.basicObj;
 
-import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
+import org.wasabineko.graphic.shape.basicObj.portObj.portOverlay.BasicPortOverlay;
+import org.wasabineko.graphic.shape.basicObj.portObj.portOverlay.PortOverlay;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,7 @@ public class UseCaseObj extends BasicObj {
     protected final Color color;
 
     public UseCaseObj(int posX, int posY) {
-        super(posX, posY, true, new JLabel("Usecase", SwingConstants.CENTER), new PortOverlay());
+        super(posX, posY, true, new JLabel("Usecase", SwingConstants.CENTER), new BasicPortOverlay());
 
         ovalOutside = new Ellipse2D.Double(0, 0, 200, 100);  //TODO: general config
         int borderSize = 2;
@@ -23,7 +24,7 @@ public class UseCaseObj extends BasicObj {
         setBounds(posX, posY, 200, 100);
         nameLabel.setBounds(0, 0, this.getWidth(), this.getHeight());
         this.add(nameLabel);
-        this.portOverlay.setMaster(this);
+        this.portOverlay.init(this);
         this.add(portOverlay);
 
         setLayout(null);

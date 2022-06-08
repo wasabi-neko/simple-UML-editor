@@ -1,7 +1,7 @@
 package org.wasabineko.graphic.shape.basicObj;
 
 import org.jetbrains.annotations.NotNull;
-import org.wasabineko.graphic.shape.basicObj.portObj.PortOverlay;
+import org.wasabineko.graphic.shape.basicObj.portObj.portOverlay.NullPortOverlay;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ import java.util.Objects;
 public class GroupObj extends BasicObj {
 
     public GroupObj() {
-        super(0, 0, false, new JLabel(""), new PortOverlay());     // TODO: groupObj should not have port
+        super(0, 0, false, new JLabel(""), new NullPortOverlay());
         this.setLayout(null);
         this.setOpaque(false);
     }
@@ -90,12 +90,6 @@ public class GroupObj extends BasicObj {
             }
         }
         return false;
-    }
-
-    @Override
-    public void setSelected(boolean isSelected) {
-        super.setSelected(isSelected);
-        this.portOverlay.setVisible(false);
     }
 
     @Override

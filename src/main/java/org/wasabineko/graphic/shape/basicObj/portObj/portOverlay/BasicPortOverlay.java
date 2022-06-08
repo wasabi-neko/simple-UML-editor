@@ -1,22 +1,13 @@
-package org.wasabineko.graphic.shape.basicObj.portObj;
+package org.wasabineko.graphic.shape.basicObj.portObj.portOverlay;
 
 import org.wasabineko.graphic.shape.basicObj.BasicObj;
+import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
+public class BasicPortOverlay extends PortOverlay {
+    public BasicPortOverlay() {}
 
-/**
- * I'm just too tired to make another PortLayout abstraction for its future concreted child
- */
-public class PortOverlay extends JPanel {
-    private final List<Port> portList = new ArrayList<>();
-
-    public PortOverlay() {
-        super();
-    }
-
-    public void setMaster(BasicObj master) {
+    @Override
+    public void init(BasicObj master) {
         int portSize = 10;
 
         this.setBounds(0,  0, master.getWidth(), master.getHeight());
@@ -37,9 +28,5 @@ public class PortOverlay extends JPanel {
 
         this.setOpaque(false);
         this.setVisible(false);
-    }
-
-    public List<Port> getPortList() {
-        return  this.portList;
     }
 }
