@@ -39,6 +39,5 @@ public class ToolBar extends JPanel {
     public void add(ToolButton butt) {
         super.add(butt);
         this.buttonGroup.add(butt);
-        butt.setParentBar(this);
     }
 }
