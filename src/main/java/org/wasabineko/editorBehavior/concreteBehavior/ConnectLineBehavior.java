@@ -44,12 +44,13 @@ public class ConnectLineBehavior extends EditorBehavior {
 
     @Override
     public void objReleaseAction(UMLObj obj, MouseEvent event) {
+        Port toPort = obj.getClosetPort(event.getX(), event.getY());
+
         // check if the formPort is null and if both fromPort and ToPort is in the same obj
-        if (registerPort == null || obj == registerPort.getMaster()) {
+        if (registerPort == null || toPort == null || obj == registerPort.getMaster()) {
             return;
         }
 
-        Port toPort = obj.getClosetPort(event.getX(), event.getY());
         Container canvas = obj.getTopParent().getParent();
         ConnectionLine line = this.lineFactory.createLine(canvas, registerPort, toPort);
         canvas.add(line);
