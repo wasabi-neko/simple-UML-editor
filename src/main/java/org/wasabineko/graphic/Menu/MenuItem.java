@@ -1,7 +1,5 @@
 package org.wasabineko.graphic.Menu;
 
-import org.wasabineko.editorBehavior.EditorBehaviorAgent;
-
 import javax.swing.*;
 import java.awt.event.ActionListener;
 

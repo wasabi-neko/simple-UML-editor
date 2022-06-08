@@ -3,7 +3,6 @@ package org.wasabineko.graphic.shape.basicObj.portObj;
 import org.wasabineko.graphic.shape.basicObj.BasicObj;
 
 import javax.swing.*;
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 

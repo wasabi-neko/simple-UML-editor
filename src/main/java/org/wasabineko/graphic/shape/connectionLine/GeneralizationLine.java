@@ -1,6 +1,5 @@
 package org.wasabineko.graphic.shape.connectionLine;
 
-import org.wasabineko.graphic.UMLCanvas;
 import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 import org.wasabineko.utility.Vector2D;
 

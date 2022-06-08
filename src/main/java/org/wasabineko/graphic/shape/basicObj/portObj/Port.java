@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Port extends JPanel {
     final BasicObj master;
-    protected ArrayList<ConnectionLine> lineList = new ArrayList<>();
+    protected final ArrayList<ConnectionLine> lineList = new ArrayList<>();
     protected boolean isFromPort;
 
     public Port(BasicObj master, int posX, int posY, int size) {

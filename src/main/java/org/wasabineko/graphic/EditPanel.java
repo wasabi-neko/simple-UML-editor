@@ -1,6 +1,5 @@
 package org.wasabineko.graphic;
 
-import org.wasabineko.editorBehavior.EditorBehaviorAgent;
 import org.wasabineko.graphic.toolBar.ToolBar;
 
 import javax.swing.*;

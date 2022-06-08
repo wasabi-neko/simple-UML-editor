@@ -3,7 +3,6 @@ package org.wasabineko.editorBehavior.concreteBehavior;
 import org.wasabineko.editorBehavior.EditorBehavior;
 import org.wasabineko.graphic.UMLCanvas;
 import org.wasabineko.graphic.shape.UMLObj;
-import org.wasabineko.graphic.shape.basicObj.BasicObj;
 import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 import org.wasabineko.graphic.shape.connectionLine.ConnectionLine;
 

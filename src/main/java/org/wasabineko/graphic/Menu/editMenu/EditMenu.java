@@ -1,10 +1,6 @@
 package org.wasabineko.graphic.Menu.editMenu;
 
 import org.wasabineko.graphic.Menu.BasicMenu;
-import org.wasabineko.graphic.Menu.MenuBar;
-
-import javax.swing.*;
-import java.util.ArrayList;
 
 public class EditMenu extends BasicMenu {
 

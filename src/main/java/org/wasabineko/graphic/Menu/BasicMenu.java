@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class BasicMenu extends JMenu {
-    ArrayList<MenuItem> itemList = new ArrayList<>();
+    final ArrayList<MenuItem> itemList = new ArrayList<>();
 
     public BasicMenu(String name) {
         super(name);

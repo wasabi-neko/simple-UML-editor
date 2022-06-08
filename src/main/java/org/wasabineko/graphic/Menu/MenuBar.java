@@ -1,14 +1,9 @@
 package org.wasabineko.graphic.Menu;
 
 import org.wasabineko.GeneralConfig;
-import org.wasabineko.editorBehavior.EditorBehavior;
-import org.wasabineko.editorBehavior.EditorBehaviorAgent;
-import org.wasabineko.editorBehavior.concreteBehavior.SelectBehavior;
 import org.wasabineko.graphic.Menu.editMenu.EditMenu;
 
 import javax.swing.*;
-import java.awt.event.*;
-import java.util.LinkedList;
 
 public class MenuBar extends JMenuBar {
 

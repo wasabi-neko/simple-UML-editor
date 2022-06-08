@@ -1,6 +1,5 @@
 package org.wasabineko;
 
-import org.wasabineko.editorBehavior.EditorBehaviorAgent;
 import org.wasabineko.graphic.EditPanel;
 import org.wasabineko.graphic.Menu.MenuBar;
 

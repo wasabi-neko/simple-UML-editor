@@ -1,6 +1,5 @@
 package org.wasabineko.graphic.shape.connectionLine;
 
-import org.wasabineko.graphic.UMLCanvas;
 import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 
@@ -71,7 +70,4 @@ public abstract class ConnectionLine extends UMLObj {
 
     @Override
     public UMLObj getTopParent() { return null; }
-
-    @Override
-    public void setSelected(boolean isSelected) { /* do nothing */ }
 }
