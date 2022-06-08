@@ -109,7 +109,6 @@ public class SelectBehavior extends EditorBehavior {
                     && obj.getY() + obj.getHeight() < lowerY) {
                 obj.setSelected(true);
                 this.selectedList.add(obj);
-//                obj.getTopParent().getParent().setComponentZOrder(obj, 0);
                 obj.bringToFront();
             }
         }
@@ -117,12 +116,13 @@ public class SelectBehavior extends EditorBehavior {
 
     private void dragObjToReleasePoint(BasicObj obj, Point objShift, MouseEvent event) {
         obj.setLocation((int) (event.getX() - objShift.getX()), (int) (event.getY() - objShift.getY()));
-//        obj.getTopParent().getParent().setComponentZOrder(obj, 0);
         obj.bringToFront();
         obj.repaintConnectedLine();
     }
 
+    // --------------------------------------------------
     // Canvas Mouse Action
+    // --------------------------------------------------
 
     @Override
     public void canvasClickAction(UMLCanvas canvas, MouseEvent event) {
@@ -148,7 +148,9 @@ public class SelectBehavior extends EditorBehavior {
         }
     }
 
+    // --------------------------------------------------
     // Obj Mouse Action
+    // --------------------------------------------------
 
     @Override
     public void objClickAction(UMLObj obj, MouseEvent event) {
@@ -158,7 +160,6 @@ public class SelectBehavior extends EditorBehavior {
         if (obj instanceof BasicObj) {
             this.selectedList.add((BasicObj) obj);
             obj.setSelected(true);
-//            obj.getTopParent().getParent().setComponentZOrder(obj, 0);  // bring to front
             obj.bringToFront();
         }
     }
@@ -185,6 +186,5 @@ public class SelectBehavior extends EditorBehavior {
             Container component = obj.getTopParent().getParent();
             selectArea(component, newEven);
         }
-
     }
 }

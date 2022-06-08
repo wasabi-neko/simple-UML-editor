@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Port extends JPanel {
     final BasicObj master;
     protected ArrayList<ConnectionLine> lineList = new ArrayList<>();
-    protected boolean isConnectedFrom;
+    protected boolean isFromPort;
 
     public Port(BasicObj master, int posX, int posY, int size) {
         super();
@@ -22,11 +22,11 @@ public class Port extends JPanel {
 
     public void addConnectionLine(ConnectionLine connectionLine, boolean isConnectedFrom) {
         lineList.add(connectionLine);
-        this.isConnectedFrom = isConnectedFrom;
+        this.isFromPort = isConnectedFrom;
     }
 
-    public boolean getIsConnectedFrom() {
-        return this.isConnectedFrom;
+    public boolean isFromPort() {
+        return this.isFromPort;
     }
 
     public ArrayList<ConnectionLine> getLineList() {

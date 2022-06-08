@@ -41,6 +41,8 @@ public class UMLCanvas extends JPanel {
             if (obj.isInShape(objEvent)) {
                 UMLObj topParent =  obj.getTopParent();
                 MouseEvent newEvent = SwingUtilities.convertMouseEvent(this, event, topParent);
+
+                // emit obj mouse action
                 EditorBehaviorAgent.getInstance().objMouseAction(topParent, newEvent);
                 return;
             }
