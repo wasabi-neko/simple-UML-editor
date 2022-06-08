@@ -51,7 +51,7 @@ public abstract class ConnectionLine extends UMLObj {
     }
 
     //------------------------------------------------------------
-    // ignore all group and select methods  //TODO: feels strange :thonk:
+    // ignore all group and select methods
     //------------------------------------------------------------
     @Override
     public boolean isConnectAble() {

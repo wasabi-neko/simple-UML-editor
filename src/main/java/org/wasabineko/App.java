@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class App {
     static public void main(String[] arg) {
-        System.setProperty("sun.java2d.uiScale", "2.0");    // TODO: this method seems duml dum
+        System.setProperty("sun.java2d.uiScale", "2.0");    // TODO: this method seems dum dum
 
         JFrame frame = new JFrame(GeneralConfig.getInstance().getWinTitle());
 

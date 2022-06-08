@@ -22,7 +22,6 @@ public class SelectBehavior extends EditorBehavior {
         super(ModeTag.TAGS.SELECT_MODE.getValue());
     }
 
-//    TODO: this structure feels dum dum, need to be refactor later
     public boolean isNowGroupAble() {
         return this.selectedList.size() > 1;
     }
@@ -114,10 +113,10 @@ public class SelectBehavior extends EditorBehavior {
         }
     }
 
-    private void dragObjToReleasePoint(BasicObj obj, Point objShift, MouseEvent event) {
+    private void dragObjToReleasePoint(UMLObj obj, Point objShift, MouseEvent event) {
         obj.setLocation((int) (event.getX() - objShift.getX()), (int) (event.getY() - objShift.getY()));
         obj.bringToFront();
-        obj.repaintConnectedLine();
+        obj.repaint();
     }
 
     // --------------------------------------------------
@@ -180,7 +179,7 @@ public class SelectBehavior extends EditorBehavior {
     public void objReleaseAction(UMLObj obj, MouseEvent event) {
         // convert local obj mouseEvent to canvas event (convert the coordinate)
         MouseEvent newEven = SwingUtilities.convertMouseEvent(obj, event, obj.getTopParent().getParent());
-        if (this.isDragObj && this.registerObj != null) {
+        if (this.isDragObj && this.registerObj.isSelectable()) {
             dragObjToReleasePoint(this.registerObj, this.objInternalShift, newEven);
         } else {
             Container component = obj.getTopParent().getParent();

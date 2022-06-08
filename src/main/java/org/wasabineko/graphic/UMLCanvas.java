@@ -21,7 +21,6 @@ public class UMLCanvas extends JPanel {
     public UMLCanvas() {
         setLayout(null);
         setPreferredSize(GeneralConfig.getInstance().getDefaultCanvasSize());
-//        setBackground(Color.lightGray); //TODO: get config color
         addMouseListener(new UMLCanvasMouseEventListener(this));
     }
 
@@ -77,7 +76,7 @@ public class UMLCanvas extends JPanel {
         public void mouseExited(MouseEvent mouseEvent) { /* do nothing */ }
     }
 
-    private  record UMLCanvasMouseMotionListener(UMLCanvas targetCanvas) implements MouseMotionListener {
+    private record UMLCanvasMouseMotionListener(UMLCanvas targetCanvas) implements MouseMotionListener {
 
         @Override
         public void mouseDragged(MouseEvent mouseEvent) {

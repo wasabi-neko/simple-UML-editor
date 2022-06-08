@@ -37,7 +37,6 @@ public class GroupObj extends BasicObj {
         }
 
         this.setBounds(minX, minY, maxX - minX, maxY - minY);
-//        TODO: maybe i need to setBounds?
 
         //* register parent and shift all child
         //* from back-est obj to front-est obj
