@@ -1,6 +1,6 @@
-package org.wasabineko.graphic.Menu.editMenu;
+package org.wasabineko.graphic.menu.editMenu;
 
-import org.wasabineko.graphic.Menu.BasicMenu;
+import org.wasabineko.graphic.menu.BasicMenu;
 
 public class EditMenu extends BasicMenu {
 

@@ -1,8 +1,8 @@
-package org.wasabineko.graphic.Menu.editMenu;
+package org.wasabineko.graphic.menu.editMenu;
 
 import org.wasabineko.editorBehavior.EditorBehaviorAgent;
 import org.wasabineko.editorBehavior.concreteBehavior.SelectBehavior;
-import org.wasabineko.graphic.Menu.MenuItem;
+import org.wasabineko.graphic.menu.MenuItem;
 
 import java.awt.event.ActionEvent;
 

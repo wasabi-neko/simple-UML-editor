@@ -10,7 +10,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public abstract class BasicObj extends UMLObj {
-    private GroupObj groupParent;
     final private boolean isConnectAble;
     protected final PortOverlay portOverlay;
     protected final JLabel nameLabel;
@@ -37,10 +36,6 @@ public abstract class BasicObj extends UMLObj {
 
     public void setLabelName(String newName) {
         this.nameLabel.setText(newName);
-    }
-
-    public PortOverlay getPortOverlay() {
-        return this.portOverlay;
     }
 
     public Port getClosetPort(int x, int y) {
@@ -84,12 +79,6 @@ public abstract class BasicObj extends UMLObj {
                 }
                 port.repaintConnectedLine();
             }
-        }
-    }
-
-    public void repaintConnectedLine() {
-        for (Port port : this.portOverlay.getPortList()) {
-            port.repaintConnectedLine();
         }
     }
 

@@ -4,7 +4,6 @@ import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
-import java.util.LinkedList;
 
 public abstract class UMLObj extends JPanel {
     protected boolean selected = false;

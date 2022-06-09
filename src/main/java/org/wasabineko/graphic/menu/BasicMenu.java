@@ -1,4 +1,4 @@
-package org.wasabineko.graphic.Menu;
+package org.wasabineko.graphic.menu;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;

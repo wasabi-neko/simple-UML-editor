@@ -1,7 +1,7 @@
 package org.wasabineko;
 
 import org.wasabineko.graphic.EditPanel;
-import org.wasabineko.graphic.Menu.MenuBar;
+import org.wasabineko.graphic.menu.MenuBar;
 
 import javax.swing.*;
 

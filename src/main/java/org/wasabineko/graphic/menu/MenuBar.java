@@ -1,7 +1,7 @@
-package org.wasabineko.graphic.Menu;
+package org.wasabineko.graphic.menu;
 
 import org.wasabineko.GeneralConfig;
-import org.wasabineko.graphic.Menu.editMenu.EditMenu;
+import org.wasabineko.graphic.menu.editMenu.EditMenu;
 
 import javax.swing.*;
 
