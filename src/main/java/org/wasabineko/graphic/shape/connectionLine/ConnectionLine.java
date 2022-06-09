@@ -67,7 +67,4 @@ public abstract class ConnectionLine extends UMLObj {
     public boolean isInShape(MouseEvent event) {
         return false;
     }
-
-    @Override
-    public UMLObj getTopParent() { return null; }
 }

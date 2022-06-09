@@ -41,10 +41,10 @@ public class GroupObj extends UMLObj {
         //* from back-est obj to front-est obj
         for (UMLObj child : childList) {
             child.setGroupParent(this);
-            child.getParent().remove(child);
+            child.getParent().remove(child);    // remove it from its previous parent
             this.add(child);
             child.setLocation(child.getX() - this.getX(), child.getY() - this.getY());
-            this.setComponentZOrder(child, 0);
+            child.bringToFront();
         }
     }
 
@@ -66,7 +66,7 @@ public class GroupObj extends UMLObj {
             child.setLocation(child.getX() + this.getX(), child.getY() + this.getY());
             this.remove(child);     // group.remove child
             container.add(child);
-            container.setComponentZOrder(child, 0);
+            child.bringToFront();
         }
         container.repaint();
     }

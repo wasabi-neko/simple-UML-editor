@@ -28,7 +28,7 @@ public class CreateObjBehavior extends EditorBehavior {
     public void canvasClickAction(UMLCanvas canvas, MouseEvent event) {
         UMLObj obj = this.objFactory.createObj(event.getX(), event.getY());
         canvas.add(obj);
-        canvas.setComponentZOrder(obj, 0);
+        obj.bringToFront();
         canvas.repaint();
     }
 

@@ -39,7 +39,7 @@ public class SelectBehavior extends EditorBehavior {
             GroupObj groupObj = new GroupObj();
             groupObj.setObjsToGroup(this.selectedList);
             container.add(groupObj);
-            container.setComponentZOrder(groupObj, 0);
+            groupObj.bringToFront();
 
             // unselect all and select the groupObj
             this.cleanAllSelected();

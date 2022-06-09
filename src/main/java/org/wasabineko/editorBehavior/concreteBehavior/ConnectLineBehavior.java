@@ -60,8 +60,8 @@ public class ConnectLineBehavior extends EditorBehavior {
         int zOrder = toOrder;
         if (zOrder > fromOrder) {zOrder = fromOrder;}
 
-        canvas.setComponentZOrder(line, zOrder);
-        canvas.repaint();
+        line.bringToFront();
+        line.repaint();
 
         this.registerPort = null;   // reset
     }

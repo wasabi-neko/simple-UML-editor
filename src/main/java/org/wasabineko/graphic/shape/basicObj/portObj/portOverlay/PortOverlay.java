@@ -2,8 +2,10 @@ package org.wasabineko.graphic.shape.basicObj.portObj.portOverlay;
 
 import org.wasabineko.graphic.shape.basicObj.BasicObj;
 import org.wasabineko.graphic.shape.basicObj.portObj.Port;
+import org.wasabineko.graphic.shape.connectionLine.ConnectionLine;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,10 @@ public abstract class PortOverlay extends JPanel {
     }
 
     abstract public void init(BasicObj master);
+
+    public List<Port> getPortList() {
+        return  this.portList;
+    }
 
     public Port getClosetPort(int x, int y) {
         if (this.portList.size() <= 0)
@@ -37,7 +43,22 @@ public abstract class PortOverlay extends JPanel {
         return minPort;
     }
 
-    public List<Port> getPortList() {
-        return  this.portList;
+    public void bringAllLineToFront() {
+        for (Port port : this.portList) {
+            for (ConnectionLine line : port.getLineList()) {
+                line.bringToFront();
+            }
+        }
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        paintChildren(g);
+        for (Port port : this.portList) {
+            for (ConnectionLine line : port.getLineList()) {
+                line.repaint();
+            }
+        }
     }
 }

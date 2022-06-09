@@ -69,17 +69,8 @@ public abstract class BasicObj extends UMLObj {
             return;
         }
 
-        this.getParent().setComponentZOrder(this, 0);
-        Container canvas = this.getTopParent().getParent();
-
-        for (Port port : this.portOverlay.getPortList()) {
-            if (port.getLineList() != null) {
-                for (ConnectionLine line : port.getLineList()) {
-                    canvas.setComponentZOrder(line, 0);
-                }
-                port.repaintConnectedLine();
-            }
-        }
+        this.getParent().setComponentZOrder(this, 0);  // bring basicObj to front
+        this.portOverlay.bringAllLineToFront();     // bring its lines to front
     }
 
     @Override
