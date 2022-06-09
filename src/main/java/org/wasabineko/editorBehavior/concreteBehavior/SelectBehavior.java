@@ -50,8 +50,7 @@ public class SelectBehavior extends EditorBehavior {
 
     public void ungroupSelectedObj() {
         if (this.isNowUngroupAble()) {
-            GroupObj groupObj = (GroupObj) selectedList.getFirst();
-            groupObj.ungroup();
+            selectedList.getFirst().ungroup();
             this.cleanAllSelected();
         }
     }
@@ -59,7 +58,7 @@ public class SelectBehavior extends EditorBehavior {
     public void renameSelectedObj() {
         if (isNowRenameAble()) {
             UMLObj obj = this.selectedList.getFirst();
-            String newName = JOptionPane.showInputDialog(obj, "rename the obj",obj.getLabelName());
+            String newName = JOptionPane.showInputDialog(obj, "rename the obj", obj.getLabelName());
             if (newName != null) {
                 obj.setLabelName(newName);
             }

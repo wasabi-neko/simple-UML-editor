@@ -21,9 +21,7 @@ public abstract class UMLObj extends JPanel {
     public abstract boolean isConnectAble();    // connectable means an obj can be connected by connection lines
 
     public void bringToFront() {
-        if (this.getParent() != null) {
-            this.getParent().setComponentZOrder(this, 0);
-        }
+        this.getParent().setComponentZOrder(this, 0);
     }
 
     public void setSelected(boolean isSelected) {
