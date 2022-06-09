@@ -62,8 +62,13 @@ public class GroupObj extends BasicObj {
         // re-add back all the child obj to the canvas(the parent container of groupObj)
         Component[] children = this.getComponents();
         for (int i = children.length - 1; i >= 0; i--) {
-            BasicObj obj = (BasicObj) children[i];
-            obj.ungroupFromGroup(this, container);
+            BasicObj child = (BasicObj) children[i];
+
+            child.setGroupParent(null);
+            child.setLocation(child.getX() + this.getX(), child.getY() + this.getY());
+            this.remove(child);     // group.remove child
+            container.add(child);
+            container.setComponentZOrder(child, 0);
         }
         container.repaint();
     }

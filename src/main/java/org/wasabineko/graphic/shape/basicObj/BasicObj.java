@@ -56,23 +56,8 @@ public abstract class BasicObj extends UMLObj {
         return this.groupParent;
     }
 
-    public void setGroupParent(@NotNull GroupObj group) {
+    public void setGroupParent(GroupObj group) {
         this.groupParent = group;
-    }
-
-    /**
-     * Remove this object from group, and add it back to the groupObject's parent.
-     * The coordinate of the object will be shifted back to the relevant coordinate
-     * with the upper parent
-     * @param group the group object which to be removed from
-     */
-    public void ungroupFromGroup(@NotNull GroupObj group, Container groupParent) {
-        Objects.requireNonNull(group, "groupObj should not be null");
-        this.groupParent = null;
-        setLocation(this.getX() + group.getX(), this.getY() + group.getY());
-        group.remove(this);
-        groupParent.add(this);
-        groupParent.setComponentZOrder(this, 0);
     }
 
     @Override
