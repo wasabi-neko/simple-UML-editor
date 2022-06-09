@@ -1,13 +1,15 @@
 package org.wasabineko.graphic.shape.basicObj.portObj;
 
+import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.BasicObj;
 import org.wasabineko.graphic.shape.connectionLine.ConnectionLine;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class Port extends JPanel {
+public class Port extends UMLObj {
     final BasicObj master;
     protected final ArrayList<ConnectionLine> lineList = new ArrayList<>();
     protected boolean isFromPort;
@@ -45,5 +47,20 @@ public class Port extends JPanel {
 
     public Point getConvertedCoordinate(Component destination) {
         return SwingUtilities.convertPoint(master, this.getX(), this.getY(), destination);
+    }
+
+    @Override
+    public boolean isInShape(MouseEvent event) {
+        return false;
+    }
+
+    @Override
+    public boolean isSelectable() {
+        return false;
+    }
+
+    @Override
+    public boolean isConnectAble() {
+        return false;
     }
 }

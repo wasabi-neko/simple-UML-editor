@@ -1,11 +1,13 @@
 package org.wasabineko.graphic.shape.basicObj.portObj.portOverlay;
 
+import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.BasicObj;
 import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 import org.wasabineko.graphic.shape.connectionLine.ConnectionLine;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.List;
 /**
  * I'm just too tired to make another PortLayout abstraction for its future concreted child
  */
-public abstract class PortOverlay extends JPanel {
+public abstract class PortOverlay extends UMLObj {
     protected final List<Port> portList = new ArrayList<>();
 
     public PortOverlay() {
@@ -60,5 +62,20 @@ public abstract class PortOverlay extends JPanel {
                 line.repaint();
             }
         }
+    }
+
+    @Override
+    public boolean isInShape(MouseEvent event) {
+        return false;
+    }
+
+    @Override
+    public boolean isSelectable() {
+        return false;
+    }
+
+    @Override
+    public boolean isConnectAble() {
+        return false;
     }
 }
