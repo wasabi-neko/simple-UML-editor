@@ -3,8 +3,7 @@ package org.wasabineko.editorBehavior.concreteBehavior;
 import org.wasabineko.editorBehavior.EditorBehavior;
 import org.wasabineko.graphic.UMLCanvas;
 import org.wasabineko.graphic.shape.UMLObj;
-import org.wasabineko.graphic.shape.basicObj.BasicObj;
-import org.wasabineko.graphic.shape.basicObj.GroupObj;
+import org.wasabineko.graphic.shape.GroupObj;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,11 +11,11 @@ import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 
 public class SelectBehavior extends EditorBehavior {
-    final LinkedList<BasicObj> selectedList = new LinkedList<>();
+    final LinkedList<UMLObj> selectedList = new LinkedList<>();
     final Point pressedCoordinate = new Point(0,0);
     final Point objInternalShift = new Point(0, 0);
     boolean isDragObj;
-    BasicObj registerObj;
+    UMLObj registerObj;
 
     public SelectBehavior() {
         super(ModeTag.TAGS.SELECT_MODE.getValue());
@@ -31,7 +30,7 @@ public class SelectBehavior extends EditorBehavior {
     }
 
     public boolean isNowRenameAble() {
-        return selectedList.size() == 1 && selectedList.getFirst() instanceof  GroupObj;
+        return selectedList.size() == 1;
     }
 
     public void groupSelectedObjs() {
@@ -59,7 +58,7 @@ public class SelectBehavior extends EditorBehavior {
 
     public void renameSelectedObj() {
         if (isNowRenameAble()) {
-            BasicObj obj = this.selectedList.getFirst();
+            UMLObj obj = this.selectedList.getFirst();
             String newName = JOptionPane.showInputDialog(obj, "rename the obj",obj.getLabelName());
             if (newName != null) {
                 obj.setLabelName(newName);
@@ -68,7 +67,7 @@ public class SelectBehavior extends EditorBehavior {
     }
 
     private void cleanAllSelected() {
-        for (BasicObj obj : selectedList) {
+        for (UMLObj obj : selectedList) {
             obj.setSelected(false);
         }
         this.selectedList.clear();
@@ -98,7 +97,7 @@ public class SelectBehavior extends EditorBehavior {
         Component[] list = canvas.getComponents();
         for (int i = list.length-1; i >= 0; i--) {
             Component component = list[i];
-            if (!(component instanceof BasicObj obj)) {
+            if (!(component instanceof UMLObj obj)) {
                 continue;
             }
 
@@ -156,23 +155,20 @@ public class SelectBehavior extends EditorBehavior {
         System.out.println("Select obj Click");
 
         this.cleanAllSelected();
-        if (obj instanceof BasicObj) {
-            this.selectedList.add((BasicObj) obj);
-            obj.setSelected(true);
-            obj.bringToFront();
-        }
+        this.selectedList.add(obj);
+        obj.setSelected(true);
+        obj.bringToFront();
     }
 
     @Override
     public void objPressAction(UMLObj obj, MouseEvent event) {
-        assert (obj instanceof BasicObj);
         this.cleanAllSelected();
         obj.setSelected(true);
-        this.selectedList.add((BasicObj) obj);
+        this.selectedList.add(obj);
 
         this.objInternalShift.setLocation(event.getX(), event.getY());
         this.isDragObj = true;
-        this.registerObj = (BasicObj) obj;
+        this.registerObj = obj;
     }
 
     @Override

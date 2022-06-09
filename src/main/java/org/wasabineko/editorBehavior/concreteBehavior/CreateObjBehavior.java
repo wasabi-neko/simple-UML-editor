@@ -3,7 +3,6 @@ package org.wasabineko.editorBehavior.concreteBehavior;
 import org.wasabineko.editorBehavior.EditorBehavior;
 import org.wasabineko.graphic.UMLCanvas;
 import org.wasabineko.graphic.shape.UMLObj;
-import org.wasabineko.graphic.shape.basicObj.BasicObj;
 
 import java.awt.event.MouseEvent;
 
@@ -12,7 +11,7 @@ public class CreateObjBehavior extends EditorBehavior {
     // Nested Class
     // ------------------------------------------------------------
     public interface ObjFactory {
-        BasicObj createObj(int x, int y);
+        UMLObj createObj(int x, int y);
     }
 
     // ------------------------------------------------------------
@@ -27,7 +26,7 @@ public class CreateObjBehavior extends EditorBehavior {
 
     @Override
     public void canvasClickAction(UMLCanvas canvas, MouseEvent event) {
-        BasicObj obj = this.objFactory.createObj(event.getX(), event.getY());
+        UMLObj obj = this.objFactory.createObj(event.getX(), event.getY());
         canvas.add(obj);
         canvas.setComponentZOrder(obj, 0);
         canvas.repaint();

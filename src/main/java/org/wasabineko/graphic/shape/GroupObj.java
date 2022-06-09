@@ -1,8 +1,7 @@
-package org.wasabineko.graphic.shape.basicObj;
+package org.wasabineko.graphic.shape;
 
 import org.jetbrains.annotations.NotNull;
 import org.wasabineko.graphic.shape.UMLObj;
-import org.wasabineko.graphic.shape.basicObj.portObj.portOverlay.NullPortOverlay;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,10 +10,9 @@ import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
 import java.util.Objects;
 
-public class GroupObj extends BasicObj {
+public class GroupObj extends UMLObj {
 
     public GroupObj() {
-        super(0, 0, false, new JLabel(""), new NullPortOverlay());
         this.setLayout(null);
         this.setOpaque(false);
     }
@@ -24,13 +22,13 @@ public class GroupObj extends BasicObj {
      * and then shift all objets to fit relevant coordinate to this groupObj
      * @param childList the objets to be grouped
      */
-    public void setObjsToGroup(@NotNull LinkedList<BasicObj> childList) {
+    public void setObjsToGroup(@NotNull LinkedList<UMLObj> childList) {
         Objects.requireNonNull(childList, "childList should not be null");
 
         // find the top-left obj coordinate and bottom-right obj
         int minX = Integer.MAX_VALUE, minY = Integer.MAX_VALUE;
         int maxX = 0, maxY = 0;
-        for (BasicObj child : childList) {
+        for (UMLObj child : childList) {
             if (minX > child.getX()) { minX = child.getX(); }
             if (minY > child.getY()) { minY = child.getY(); }
             if (maxX < child.getX() + child.getWidth()) { maxX = child.getX() + child.getWidth(); }
@@ -41,7 +39,7 @@ public class GroupObj extends BasicObj {
 
         //* register parent and shift all child
         //* from back-est obj to front-est obj
-        for (BasicObj child : childList) {
+        for (UMLObj child : childList) {
             child.setGroupParent(this);
             child.getParent().remove(child);
             this.add(child);
@@ -62,7 +60,7 @@ public class GroupObj extends BasicObj {
         // re-add back all the child obj to the canvas(the parent container of groupObj)
         Component[] children = this.getComponents();
         for (int i = children.length - 1; i >= 0; i--) {
-            BasicObj child = (BasicObj) children[i];
+            UMLObj child = (UMLObj) children[i];
 
             child.setGroupParent(null);
             child.setLocation(child.getX() + this.getX(), child.getY() + this.getY());
@@ -73,12 +71,16 @@ public class GroupObj extends BasicObj {
         container.repaint();
     }
 
+
+    // --------------------------------------------------
+    // Override Methods
+    // --------------------------------------------------
     @Override
     public void bringToFront() {
         super.bringToFront();
         Component[] children = this.getComponents();
         for (int i = children.length - 1; i >= 0; i--) {
-            BasicObj obj = (BasicObj) children[i];
+            UMLObj obj = (UMLObj) children[i];
             obj.bringToFront();
         }
     }
@@ -92,9 +94,9 @@ public class GroupObj extends BasicObj {
     public boolean isInShape(MouseEvent event) {
         Component[] children = this.getComponents();
         for (Component component: children) {
-            assert (component instanceof BasicObj);
+            assert (component instanceof UMLObj);
             MouseEvent objEvent = SwingUtilities.convertMouseEvent(this, event, component);
-            if (((BasicObj) component).isInShape(objEvent)) {
+            if (((UMLObj) component).isInShape(objEvent)) {
                 return true;
             }
         }
@@ -102,8 +104,21 @@ public class GroupObj extends BasicObj {
     }
 
     @Override
-    public void paintSelf(Graphics2D g2d) {
+    public boolean isSelectable() {
+        return true;
+    }
+
+    @Override
+    public boolean isConnectAble() {
+        return false;
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        super.paintChildren(g);
         if (this.selected) {
+            Graphics2D g2d = (Graphics2D) g;
             g2d.setPaint(Color.CYAN);
             g2d.setStroke(new BasicStroke(2));
             g2d.draw(new Rectangle2D.Double(0, 0, this.getWidth(), this.getHeight()));

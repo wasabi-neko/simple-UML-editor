@@ -1,6 +1,6 @@
 package org.wasabineko.graphic.shape.basicObj;
 
-import org.jetbrains.annotations.NotNull;
+import org.wasabineko.graphic.shape.GroupObj;
 import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.portObj.Port;
 import org.wasabineko.graphic.shape.basicObj.portObj.portOverlay.PortOverlay;
@@ -8,12 +8,10 @@ import org.wasabineko.graphic.shape.connectionLine.ConnectionLine;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Objects;
 
 public abstract class BasicObj extends UMLObj {
     private GroupObj groupParent;
     final private boolean isConnectAble;
-    protected boolean selected = false;
     protected final PortOverlay portOverlay;
     protected final JLabel nameLabel;
 
@@ -49,25 +47,6 @@ public abstract class BasicObj extends UMLObj {
         return this.portOverlay.getClosetPort(x, y);
     }
 
-    //------------------------------------------------------------
-    // Group relative Methods
-    //------------------------------------------------------------
-    public GroupObj getGroupParent() {
-        return this.groupParent;
-    }
-
-    public void setGroupParent(GroupObj group) {
-        this.groupParent = group;
-    }
-
-    @Override
-    public UMLObj getTopParent() {
-        if (groupParent == null) {
-            return this;
-        } else {
-            return groupParent.getTopParent();
-        }
-    }
 
     //------------------------------------------------------------
     // Select relative Methods
