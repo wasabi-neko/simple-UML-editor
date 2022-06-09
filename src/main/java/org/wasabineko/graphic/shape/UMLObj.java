@@ -13,8 +13,8 @@ public abstract class UMLObj extends JPanel {
     public abstract boolean isInShape(MouseEvent event);
 
     public abstract UMLObj getTopParent();
-    public abstract boolean isSelectable();
-    public abstract boolean isConnectAble();
+    public abstract boolean isSelectable();     // selectable means an obj can be selected and moved by mouse
+    public abstract boolean isConnectAble();    // connectable means an obj can be connected by connection lines
 
     public void bringToFront() {
         if (this.getParent() != null) {

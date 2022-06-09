@@ -1,7 +1,6 @@
 package org.wasabineko.graphic.shape.basicObj;
 
 import org.wasabineko.graphic.shape.basicObj.portObj.portOverlay.BasicPortOverlay;
-import org.wasabineko.graphic.shape.basicObj.portObj.portOverlay.PortOverlay;
 
 import javax.swing.*;
 import java.awt.*;

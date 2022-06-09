@@ -1,6 +1,7 @@
 package org.wasabineko.graphic.shape.basicObj;
 
 import org.jetbrains.annotations.NotNull;
+import org.wasabineko.graphic.shape.UMLObj;
 import org.wasabineko.graphic.shape.basicObj.portObj.portOverlay.NullPortOverlay;
 
 import javax.swing.*;

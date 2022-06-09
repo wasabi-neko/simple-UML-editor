@@ -35,7 +35,6 @@ public class EditorBehaviorAgent {
         this.editorBehavior = editorBehavior;
     }
 
-    //TODO: maybe this is not a dummy dum dum idea, but i have to :(
     public EditorBehavior getEditorBehavior() {
         return this.editorBehavior;
     }
@@ -52,7 +51,6 @@ public class EditorBehaviorAgent {
             case MouseEvent.MOUSE_CLICKED -> editorBehavior.canvasClickAction(canvas, event);
             case MouseEvent.MOUSE_PRESSED -> editorBehavior.canvasPressAction(canvas, event);
             case MouseEvent.MOUSE_RELEASED -> editorBehavior.canvasReleaseAction(canvas, event);
-            //TODO: raise exception: exception case
         }
     }
 
@@ -61,7 +59,6 @@ public class EditorBehaviorAgent {
             case MouseEvent.MOUSE_CLICKED -> editorBehavior.objClickAction(obj, event);
             case MouseEvent.MOUSE_PRESSED -> editorBehavior.objPressAction(obj, event);
             case MouseEvent.MOUSE_RELEASED -> editorBehavior.objReleaseAction(obj, event);
-            //TODO: raise exception: exception case
         }
     }
 }

@@ -8,7 +8,6 @@ import org.wasabineko.graphic.shape.connectionLine.ConnectionLine;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Point2D;
 import java.util.Objects;
 
 public abstract class BasicObj extends UMLObj {
