@@ -56,20 +56,8 @@ public abstract class BasicObj extends UMLObj {
         return this.groupParent;
     }
 
-    /**
-     * Remove the objet itself from canvas, and add it to provided groupObject
-     * The coordinate of the object will be shifted to the relevant coordinate
-     * with the GroupObjet
-     * @param group the group object which to add this object in
-     */
     public void setGroupParent(@NotNull GroupObj group) {
-        Objects.requireNonNull(group, "groupObj should not be null");
-
         this.groupParent = group;
-        this.getParent().remove(this);
-        group.add(this);
-        setLocation(this.getX() - group.getX(), this.getY() - group.getY());
-        group.setComponentZOrder(this, 0);
     }
 
     /**

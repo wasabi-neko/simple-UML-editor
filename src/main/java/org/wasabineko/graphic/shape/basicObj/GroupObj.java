@@ -43,6 +43,10 @@ public class GroupObj extends BasicObj {
         //* from back-est obj to front-est obj
         for (BasicObj child : childList) {
             child.setGroupParent(this);
+            child.getParent().remove(child);
+            this.add(child);
+            child.setLocation(child.getX() - this.getX(), child.getY() - this.getY());
+            this.setComponentZOrder(child, 0);
         }
     }
 
